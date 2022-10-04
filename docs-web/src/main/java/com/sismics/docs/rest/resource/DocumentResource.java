@@ -842,6 +842,7 @@ public class DocumentResource extends BaseResource {
     public Response update(
             @PathParam("id") String id,
             @FormParam("title") String title,
+            @FormParam("name") String name,
             @FormParam("description") String description,
             @FormParam("subject") String subject,
             @FormParam("identifier") String identifier,
@@ -863,6 +864,7 @@ public class DocumentResource extends BaseResource {
         
         // Validate input data
         title = ValidationUtil.validateLength(title, "title", 1, 100, false);
+        name = ValidationUtil.validateLength(name, "name", 1, 100, false);
         language = ValidationUtil.validateLength(language, "language", 3, 7, false);
         description = ValidationUtil.validateLength(description, "description", 0, 4000, true);
         subject = ValidationUtil.validateLength(subject, "subject", 0, 500, true);

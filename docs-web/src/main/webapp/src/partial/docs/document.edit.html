@@ -28,6 +28,43 @@
             typeahead-wait-ms="200" ng-disabled="fileIsUploading" />
         </div>
       </div>
+      <div class="form-group" ng-class="{ 'has-error': !documentForm.name.$valid && documentForm.$dirty }">
+        <label class="col-sm-2 control-label" for="inputName">Name</label>
+        <div class="col-sm-10">
+          <input required ng-maxlength="100" class="form-control" type="text" id="inputName"
+            ng-attr-placeholder="Name of the applicant" name="name" ng-model="document.name" autocomplete="off"
+            ng-disabled="fileIsUploading" />
+        </div>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error': !documentForm.highest_held_degree.$valid && documentForm.$dirty }">
+        <label class="col-sm-2 control-label" for="inputDegree">Highest Held Degree</label>
+        <div class="col-sm-10">
+          <select required class="form-control"  id="inputDegree"
+            ng-attr-placeholder="Highest Held Degree" name="highest_held_degree" ng-model="document.highest_held_degree" autocomplete="off"
+            ng-disabled="fileIsUploading" >
+            <option value="associate_degree">Associate degree</option>
+            <option value="bachelor_degree">Bachelor's degree</option>
+            <option value="master_degree">Master's degree</option>
+            <option value="doctoral_degree">Doctoral degree</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error': !documentForm.previous_institute.$valid && documentForm.$dirty }">
+        <label class="col-sm-2 control-label" for="inputInstitute">Last Attended Institute</label>
+        <div class="col-sm-10">
+          <input required class="form-control" type="text" id="inputInstitute"
+            ng-attr-placeholder="Name of the last attended school" name="previous_institute" ng-model="document.previous_institute" autocomplete="off"
+            ng-disabled="fileIsUploading" />
+        </div>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error': !documentForm.degree_date.$valid && documentForm.$dirty }">
+        <label class="col-sm-2 control-label" for="inputDegreeDate">Date of degree</label>
+        <div class="col-sm-10">
+          <input required class="form-control" type="date" id="inputDegreeDate"
+            ng-attr-placeholder="Date of last degree acquisition" name="degree_date" ng-model="document.degree_date" autocomplete="off"
+            ng-disabled="fileIsUploading"/>
+        </div>
+      </div>
       <div class="form-group" ng-class="{ 'has-error': !documentForm.description.$valid }">
         <label class="col-sm-2 control-label" for="inputDescription">{{ 'document.description' | translate }}</label>
         <div class="col-sm-10">
