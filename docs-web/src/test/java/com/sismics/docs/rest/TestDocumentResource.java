@@ -665,7 +665,7 @@ public class TestDocumentResource extends BaseJerseyTest {
 
         // Search documents by query in full content
         JsonObject json = target().path("/document/list")
-                .queryParam("search", "full:vp9")
+                .queryParam("search", "by:document_video")
                 .request()
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, documentVideoToken)
                 .get(JsonObject.class);
