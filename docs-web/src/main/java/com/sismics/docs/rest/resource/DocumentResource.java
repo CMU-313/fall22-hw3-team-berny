@@ -59,7 +59,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.text.MessageFormat;
 import java.util.*;
-
+import java.text.SimpleDateFormat;  
 /**
  * Document REST resources.
  * 
@@ -842,7 +842,12 @@ public class DocumentResource extends BaseResource {
     public Response update(
             @PathParam("id") String id,
             @FormParam("title") String title,
+            /* new attribues added by Rui */
             @FormParam("name") String name,
+            @FormParam("highest_held_degree") String highest_held_degree,
+            @FormParam("previous_institute") String previous_institute,
+            @FormParam("degree_date") String degree_date,
+            /* ----------------------------- */
             @FormParam("description") String description,
             @FormParam("subject") String subject,
             @FormParam("identifier") String identifier,
@@ -864,7 +869,15 @@ public class DocumentResource extends BaseResource {
         
         // Validate input data
         title = ValidationUtil.validateLength(title, "title", 1, 100, false);
+        
         name = ValidationUtil.validateLength(name, "name", 1, 100, false);
+        previous_institute = ValidationUtil.validateLength(previous_institute, "previous_institute", 1, 100, false);
+        try {
+            Date parsed_degree_date=new SimpleDateFormat("dd/MM/yyyy").parse(degree_date);
+        } catch (Exception e) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid date", degree_date));
+        }
+
         language = ValidationUtil.validateLength(language, "language", 3, 7, false);
         description = ValidationUtil.validateLength(description, "description", 0, 4000, true);
         subject = ValidationUtil.validateLength(subject, "subject", 0, 500, true);
@@ -879,7 +892,12 @@ public class DocumentResource extends BaseResource {
         if (language != null && !Constants.SUPPORTED_LANGUAGES.contains(language)) {
             throw new ClientException("ValidationError", MessageFormat.format("{0} is not a supported language", language));
         }
+        /* validating if degree input is valid */
+        if (highest_held_degree != null && !Constants.DEGREES.contains(highest_held_degree)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid degree", highest_held_degree));
+        }
         
+
         // Check write permission
         AclDao aclDao = new AclDao();
         if (!aclDao.checkPermission(id, PermType.WRITE, getTargetIdList(null))) {
