@@ -1,4 +1,6 @@
 package com.sismics.docs.rest;
+import java.util.*;
+
 
 import java.util.Date;
 
@@ -38,6 +40,10 @@ public class TestCommentResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, comment1Token)
                 .put(Entity.form(new Form()
                         .param("title", "My super title document 1")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(new Date().getTime()))
                         .param("description", "My super description for document 1")
                         .param("language", "eng")
                         .param("create_date", Long.toString(create1Date))), JsonObject.class);

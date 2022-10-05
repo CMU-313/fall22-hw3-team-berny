@@ -168,6 +168,10 @@ public class DocumentResource extends BaseResource {
         JsonObjectBuilder document = Json.createObjectBuilder()
                 .add("id", documentDto.getId())
                 .add("title", documentDto.getTitle())
+                .add("name", documentDto.getName())
+                .add("highest_held_degree", documentDto.getHighestHeldDegree())
+                .add("degree_date", documentDto.getDegreeDate())
+                .add("previous_institute", documentDto.getPreviousInstitute())
                 .add("description", JsonUtil.nullable(documentDto.getDescription()))
                 .add("create_date", documentDto.getCreateTimestamp())
                 .add("update_date", documentDto.getUpdateTimestamp())
@@ -721,6 +725,12 @@ public class DocumentResource extends BaseResource {
     public Response add(
             @FormParam("title") String title,
             @FormParam("description") String description,
+            /* new attribues added by Rui */
+            @FormParam("name") String name,
+            @FormParam("highest_held_degree") String highest_held_degree,
+            @FormParam("previous_institute") String previous_institute,
+            @FormParam("degree_date") String degree_date_str,
+            /* ----------------------------- */
             @FormParam("subject") String subject,
             @FormParam("identifier") String identifier,
             @FormParam("publisher") String publisher,
@@ -742,6 +752,9 @@ public class DocumentResource extends BaseResource {
         // Validate input data
         title = ValidationUtil.validateLength(title, "title", 1, 100, false);
         language = ValidationUtil.validateLength(language, "language", 3, 7, false);
+        name = ValidationUtil.validateLength(name, "name", 1, 100, false);
+        previous_institute = ValidationUtil.validateLength(previous_institute, "previous_institute", 1, 100, false);
+
         description = ValidationUtil.validateLength(description, "description", 0, 4000, true);
         subject = ValidationUtil.validateLength(subject, "subject", 0, 500, true);
         identifier = ValidationUtil.validateLength(identifier, "identifier", 0, 500, true);
@@ -752,14 +765,24 @@ public class DocumentResource extends BaseResource {
         coverage = ValidationUtil.validateLength(coverage, "coverage", 0, 100, true);
         rights = ValidationUtil.validateLength(rights, "rights", 0, 100, true);
         Date createDate = ValidationUtil.validateDate(createDateStr, "create_date", true);
+        Date degree_date = ValidationUtil.validateDate(degree_date_str, "degree_date", true);
         if (!Constants.SUPPORTED_LANGUAGES.contains(language)) {
             throw new ClientException("ValidationError", MessageFormat.format("{0} is not a supported language", language));
         }
+        /* validating if degree input is valid */
+        if (highest_held_degree != null && !Constants.DEGREES.contains(highest_held_degree)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid degree", highest_held_degree));
+        }
+        
 
         // Create the document
         Document document = new Document();
         document.setUserId(principal.getId());
         document.setTitle(title);
+        document.setName(name);
+        document.setHighestHeldDegree(highest_held_degree);
+        document.setDegreeDate(degree_date);
+        document.setPreviousInstitute(previous_institute);
         document.setDescription(description);
         document.setSubject(subject);
         document.setIdentifier(identifier);
@@ -846,7 +869,7 @@ public class DocumentResource extends BaseResource {
             @FormParam("name") String name,
             @FormParam("highest_held_degree") String highest_held_degree,
             @FormParam("previous_institute") String previous_institute,
-            @FormParam("degree_date") String degree_date,
+            @FormParam("degree_date") String degree_date_str,
             /* ----------------------------- */
             @FormParam("description") String description,
             @FormParam("subject") String subject,
@@ -872,11 +895,6 @@ public class DocumentResource extends BaseResource {
         
         name = ValidationUtil.validateLength(name, "name", 1, 100, false);
         previous_institute = ValidationUtil.validateLength(previous_institute, "previous_institute", 1, 100, false);
-        try {
-            Date parsed_degree_date=new SimpleDateFormat("dd/MM/yyyy").parse(degree_date);
-        } catch (Exception e) {
-            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid date", degree_date));
-        }
 
         language = ValidationUtil.validateLength(language, "language", 3, 7, false);
         description = ValidationUtil.validateLength(description, "description", 0, 4000, true);
@@ -889,6 +907,7 @@ public class DocumentResource extends BaseResource {
         coverage = ValidationUtil.validateLength(coverage, "coverage", 0, 100, true);
         rights = ValidationUtil.validateLength(rights, "rights", 0, 100, true);
         Date createDate = ValidationUtil.validateDate(createDateStr, "create_date", true);
+        Date degree_date = ValidationUtil.validateDate(degree_date_str, "degree_date", true);
         if (language != null && !Constants.SUPPORTED_LANGUAGES.contains(language)) {
             throw new ClientException("ValidationError", MessageFormat.format("{0} is not a supported language", language));
         }
@@ -913,6 +932,10 @@ public class DocumentResource extends BaseResource {
         
         // Update the document
         document.setTitle(title);
+        document.setName(name);
+        document.setHighestHeldDegree(highest_held_degree);
+        document.setDegreeDate(degree_date);
+        document.setPreviousInstitute(previous_institute);
         document.setDescription(description);
         document.setSubject(subject);
         document.setIdentifier(identifier);
@@ -1016,6 +1039,10 @@ public class DocumentResource extends BaseResource {
             document.setTitle(StringUtils.abbreviate(mailContent.getSubject(), 100));
         }
         document.setDescription(StringUtils.abbreviate(mailContent.getMessage(), 4000));
+        document.setName("Mail");
+        document.setHighestHeldDegree("associate_degree");
+        document.setDegreeDate(new Date());
+        document.setPreviousInstitute("CMU");
         document.setSubject(StringUtils.abbreviate(mailContent.getSubject(), 500));
         document.setFormat("EML");
         document.setSource("Email");

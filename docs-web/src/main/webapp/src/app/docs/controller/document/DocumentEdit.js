@@ -95,6 +95,12 @@ angular.module('docs').controller('DocumentEdit', function($rootScope, $scope, $
     if (document.create_date instanceof Date) {
       document.create_date = document.create_date.getTime();
     }
+
+    console.log(document.degree_date);
+    if (document.degree_date instanceof Date) {
+      document.degree_date = document.degree_date.getTime();
+      console.log(document.degree_date);
+    }
     
     // Extract ids from tags
     document.tags = _.pluck(document.tags, 'id');
