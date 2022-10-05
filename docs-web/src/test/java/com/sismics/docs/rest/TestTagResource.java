@@ -142,6 +142,10 @@ public class TestTagResource extends BaseJerseyTest {
                 .post(Entity.form(new Form()
                         .param("title", "My super document 2")
                         .param("language", "eng")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", "04/10/2022")
                         .param("tags", tag3Id)
                         .param("tags", tag4Id)));
         Assert.assertEquals(Status.OK, Status.fromStatusCode(response.getStatus()));
@@ -161,6 +165,10 @@ public class TestTagResource extends BaseJerseyTest {
                 .post(Entity.form(new Form()
                         .param("title", "My super document 2")
                         .param("language", "eng")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", "04/10/2022")
                         .param("tags", tag4Id)));
         Assert.assertEquals(Status.OK, Status.fromStatusCode(response.getStatus()));
         

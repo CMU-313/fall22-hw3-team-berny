@@ -45,6 +45,13 @@ public class Constants {
      */
     public static final List<String> SUPPORTED_LANGUAGES = Lists.newArrayList("eng", "fra", "ita", "deu", "spa", "por", "pol", "rus", "ukr", "ara", "hin", "chi_sim", "chi_tra", "jpn", "tha", "kor", "nld", "tur", "heb", "hun", "fin", "swe", "lav", "dan", "nor", "vie", "ces");
 
+     /**
+     * List of applcant degrees .
+     */
+    public static final List<String> DEGREES = Lists.newArrayList("associate_degree","bachelor_degree","master_degree","doctoral_degree");
+
+
+
     /**
      * Base URL environment variable.
      */

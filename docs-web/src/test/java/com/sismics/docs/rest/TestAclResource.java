@@ -158,6 +158,10 @@ public class TestAclResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, acl2Token)
                 .post(Entity.form(new Form()
                         .param("title", "My new super document 1")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", "04/10/2022")
                         .param("language", "eng")), JsonObject.class);
         Assert.assertEquals(document1Id, json.getString("id"));
 
@@ -338,6 +342,10 @@ public class TestAclResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, acltag2Token)
                 .post(Entity.form(new Form()
                         .param("title", "My super document 1")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", "04/10/2022")
                         .param("tags", tag1Id)
                         .param("language", "eng")));
         Assert.assertEquals(Status.FORBIDDEN.getStatusCode(), response.getStatus());
@@ -371,6 +379,11 @@ public class TestAclResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, acltag2Token)
                 .post(Entity.form(new Form()
                         .param("title", "My super document 1")
+                        .param("language", "eng")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", "04/10/2022")
                         .param("tags", tag1Id)
                         .param("language", "eng")));
         Assert.assertEquals(Status.FORBIDDEN.getStatusCode(), response.getStatus());
@@ -447,6 +460,10 @@ public class TestAclResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, acltag2Token)
                 .post(Entity.form(new Form()
                         .param("title", "My super document 1")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", "04/10/2022")
                         .param("tags", tag1Id)
                         .param("language", "eng")), JsonObject.class);
     }
