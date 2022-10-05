@@ -99,7 +99,7 @@ public class TestTagResource extends BaseJerseyTest {
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
-                        .param("degree_date", Long.toString(new Date().getTime()))
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("tags", tag3Id)
                         .param("language", "eng")), JsonObject.class);
         String document1Id = json.getString("id");
@@ -112,7 +112,7 @@ public class TestTagResource extends BaseJerseyTest {
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
-                        .param("degree_date", Long.toString(new Date().getTime()))
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("tags", tag4Id)
                         .param("language", "eng")), JsonObject.class);
         String document2Id = json.getString("id");
@@ -155,7 +155,7 @@ public class TestTagResource extends BaseJerseyTest {
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
-                        .param("degree_date", Long.toString(new Date().getTime()))
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("tags", tag3Id)
                         .param("tags", tag4Id)));
         Assert.assertEquals(Status.OK, Status.fromStatusCode(response.getStatus()));
@@ -178,7 +178,7 @@ public class TestTagResource extends BaseJerseyTest {
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
-                        .param("degree_date", Long.toString(new Date().getTime()))
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("tags", tag4Id)));
         Assert.assertEquals(Status.OK, Status.fromStatusCode(response.getStatus()));
         

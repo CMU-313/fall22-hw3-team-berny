@@ -45,9 +45,9 @@ public class TestAclResource extends BaseJerseyTest {
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
-                        .param("degree_date", Long.toString(new Date().getTime()))
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("language", "eng")
-                        .param("create_date", Long.toString(new Date().getTime()))), JsonObject.class);
+                        .param("create_date", Long.toString(1664991975626L))), JsonObject.class);
         String document1Id = json.getString("id");
 
         // Get the document as acl1
@@ -167,7 +167,7 @@ public class TestAclResource extends BaseJerseyTest {
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
-                        .param("degree_date", Long.toString(new Date().getTime()))
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("language", "eng")), JsonObject.class);
         Assert.assertEquals(document1Id, json.getString("id"));
 
@@ -305,7 +305,7 @@ public class TestAclResource extends BaseJerseyTest {
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
-                        .param("degree_date", Long.toString(new Date().getTime()))
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("tags", tag1Id)
                         .param("language", "eng")), JsonObject.class);
         String document1Id = json.getString("id");
@@ -355,7 +355,7 @@ public class TestAclResource extends BaseJerseyTest {
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
-                        .param("degree_date", Long.toString(new Date().getTime()))
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("tags", tag1Id)
                         .param("language", "eng")));
         Assert.assertEquals(Status.FORBIDDEN.getStatusCode(), response.getStatus());
@@ -393,7 +393,7 @@ public class TestAclResource extends BaseJerseyTest {
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
-                        .param("degree_date", Long.toString(new Date().getTime()))
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("tags", tag1Id)
                         .param("language", "eng")));
         Assert.assertEquals(Status.FORBIDDEN.getStatusCode(), response.getStatus());
@@ -473,7 +473,7 @@ public class TestAclResource extends BaseJerseyTest {
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
-                        .param("degree_date", Long.toString(new Date().getTime()))
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("tags", tag1Id)
                         .param("language", "eng")), JsonObject.class);
     }

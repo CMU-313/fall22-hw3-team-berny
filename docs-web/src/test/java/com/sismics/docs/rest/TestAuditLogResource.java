@@ -47,7 +47,7 @@ public class TestAuditLogResource extends BaseJerseyTest {
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
-                        .param("degree_date", Long.toString(new Date().getTime()))
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("description", "My super description for document 1")
                         .param("tags", tag1Id)
                         .param("language", "eng")

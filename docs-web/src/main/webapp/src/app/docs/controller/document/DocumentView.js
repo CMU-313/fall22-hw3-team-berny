@@ -7,6 +7,18 @@ angular.module('docs').controller('DocumentView', function ($scope, $rootScope, 
   // Load document data from server
   Restangular.one('document', $stateParams.id).get().then(function (data) {
     $scope.document = data;
+    
+    $scope.document.degree_date = new Date($scope.document.degree_date).toDateString();
+    if ($scope.document.highest_held_degree == "associate_degree" ){
+      $scope.document.highest_held_degree = "Associate's Degree";
+    }else if($scope.document.highest_held_degree == "bachelor_degree" ){
+      $scope.document.highest_held_degree = "Bachelor's Degree";
+    }else if($scope.document.highest_held_degree == "master_degree" ){
+      $scope.document.highest_held_degree = "Master's Degree";
+    }else {
+      $scope.document.highest_held_degree = "Doctoral Degree";
+    }
+    
   }, function (response) {
     $scope.error = response;
   });

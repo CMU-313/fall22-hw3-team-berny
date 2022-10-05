@@ -114,12 +114,7 @@ public class DocumentDao {
         documentDto.setHighestHeldDegree((String) o[i++]);
         documentDto.setPreviousInstitute((String) o[i++]);
         Timestamp degree_date = ((Timestamp) o[i++]);
-        if (degree_date!= null) {
-            documentDto.setDegreeDate(degree_date.getTime());
-        } else {
-            Timestamp date = new Timestamp(1662696000000L);
-            documentDto.setDegreeDate(date.getTime());
-        }
+        documentDto.setDegreeDate(degree_date.getTime());
         documentDto.setDescription((String) o[i++]);
         documentDto.setSubject((String) o[i++]);
         documentDto.setIdentifier((String) o[i++]);

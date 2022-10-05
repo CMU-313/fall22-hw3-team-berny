@@ -67,7 +67,7 @@ public class TestRouteResource extends BaseJerseyTest {
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
-                        .param("degree_date", Long.toString(new Date().getTime()))
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("language", "eng")), JsonObject.class);
         String document1Id = json.getString("id");
 
@@ -404,7 +404,7 @@ public class TestRouteResource extends BaseJerseyTest {
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
-                        .param("degree_date", Long.toString(new Date().getTime()))
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("description", "My super description for document 1")
                         .param("tags", tagPendingId)
                         .param("language", "eng")), JsonObject.class);
@@ -466,7 +466,7 @@ public class TestRouteResource extends BaseJerseyTest {
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
-                        .param("degree_date", Long.toString(new Date().getTime()))
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("tags", tagPendingId)
                         .param("language", "eng")), JsonObject.class);
         String document2Id = json.getString("id");
