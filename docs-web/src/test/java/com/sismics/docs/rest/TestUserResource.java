@@ -1,7 +1,5 @@
 package com.sismics.docs.rest;
 import java.util.*;
-
-
 import com.sismics.util.filter.TokenBasedSecurityFilter;
 import com.sismics.util.totp.GoogleAuthenticator;
 import org.junit.Assert;

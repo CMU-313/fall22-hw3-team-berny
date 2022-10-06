@@ -46,10 +46,21 @@ public class Constants {
     public static final List<String> SUPPORTED_LANGUAGES = Lists.newArrayList("eng", "fra", "ita", "deu", "spa", "por", "pol", "rus", "ukr", "ara", "hin", "chi_sim", "chi_tra", "jpn", "tha", "kor", "nld", "tur", "heb", "hun", "fin", "swe", "lav", "dan", "nor", "vie", "ces");
 
      /**
-     * List of applcant degrees .
+     * List of applicant degrees .
      */
     public static final List<String> DEGREES = Lists.newArrayList("associate_degree","bachelor_degree","master_degree","doctoral_degree");
 
+    /**
+     * List of applicant gpa scale options.
+    */
+    public static final List<String> GPASCALE = Lists.newArrayList("4_5","3_4","2_3","1_2", "0_1");
+
+
+    /**
+     * List of college applying to .
+    */
+    // public static final List<String> CMUCOLLEGE = Lists.newArrayList("College of Engineering","College of Fine Arts","Dietrich College of Humanities and Social Sciences","Heinz College of Information Systems and Public Policy", "Mellon College of Science", "School of Computer Science", "Tepper School of Business");
+    public static final List<String> CMUCOLLEGE = Lists.newArrayList("cit","cfa","dc","heinz", "mcs", "scs", "tp");
 
 
     /**

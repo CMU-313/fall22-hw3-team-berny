@@ -229,6 +229,8 @@ public class InboxService extends AbstractScheduledService {
         document.setDegreeDate(new Date());
         document.setPreviousInstitute("CMU");
         document.setDescription(StringUtils.abbreviate(mailContent.getMessage(), 4000));
+        document.setGPAScale("3.0_4.0");
+        document.setCMUCollege("cit");
         document.setSubject(StringUtils.abbreviate(mailContent.getSubject(), 500));
         document.setFormat("EML");
         document.setSource("Inbox");

@@ -1,7 +1,5 @@
 package com.sismics.docs.rest;
 import java.util.*;
-
-
 import java.io.InputStream;
 
 import javax.json.JsonArray;
@@ -44,6 +42,8 @@ public class TestShareResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, share1Token)
                 .put(Entity.form(new Form()
                         .param("title", "File test document 1")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")

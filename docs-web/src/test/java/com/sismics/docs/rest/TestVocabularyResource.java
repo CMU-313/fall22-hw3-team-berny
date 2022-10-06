@@ -1,7 +1,5 @@
 package com.sismics.docs.rest;
 import java.util.*;
-
-
 import com.sismics.util.filter.TokenBasedSecurityFilter;
 import org.junit.Assert;
 import org.junit.Test;

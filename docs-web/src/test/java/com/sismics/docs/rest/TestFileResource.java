@@ -1,7 +1,5 @@
 package com.sismics.docs.rest;
 import java.util.*;
-
-
 import com.google.common.io.ByteStreams;
 import com.google.common.io.Resources;
 import com.sismics.docs.core.util.DirectoryUtil;
@@ -465,6 +463,8 @@ public class TestFileResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, fileQuotaToken)
                 .put(Entity.form(new Form()
                         .param("title", "File test document 1")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")

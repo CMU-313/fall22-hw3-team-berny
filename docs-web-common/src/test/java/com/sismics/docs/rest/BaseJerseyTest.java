@@ -1,7 +1,6 @@
 package com.sismics.docs.rest;
 import java.util.*;
 
-
 import com.sismics.docs.rest.util.ClientUtil;
 import com.sismics.util.filter.HeaderBasedSecurityFilter;
 import com.sismics.util.filter.RequestContextFilter;

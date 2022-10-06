@@ -1,7 +1,5 @@
 package com.sismics.docs.rest;
 import java.util.*;
-
-
 import com.sismics.util.filter.TokenBasedSecurityFilter;
 import org.junit.Assert;
 import org.junit.Test;
@@ -96,6 +94,8 @@ public class TestTagResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, tag1Token)
                 .put(Entity.form(new Form()
                         .param("title", "My super document 1")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
@@ -109,6 +109,8 @@ public class TestTagResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, tag1Token)
                 .put(Entity.form(new Form()
                         .param("title", "My super document 2")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
@@ -152,6 +154,8 @@ public class TestTagResource extends BaseJerseyTest {
                 .post(Entity.form(new Form()
                         .param("title", "My super document 2")
                         .param("language", "eng")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
@@ -175,6 +179,8 @@ public class TestTagResource extends BaseJerseyTest {
                 .post(Entity.form(new Form()
                         .param("title", "My super document 2")
                         .param("language", "eng")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")

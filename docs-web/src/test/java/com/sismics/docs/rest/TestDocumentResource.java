@@ -1,7 +1,5 @@
 package com.sismics.docs.rest;
 import java.util.*;
-
-
 import com.google.common.io.ByteStreams;
 import com.google.common.io.Resources;
 import com.sismics.docs.core.util.DirectoryUtil;
@@ -73,6 +71,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
                         .param("description", "My super description for document 1")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
@@ -97,6 +97,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, document1Token)
                 .put(Entity.form(new Form()
                         .param("title", "My super title document 2")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
@@ -161,6 +163,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
                         .param("description", "My super description for document 3")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("language", "eng")
                         .param("create_date", Long.toString(create3Date))), JsonObject.class);
         String document3Id = json.getString("id");
@@ -256,6 +260,8 @@ public class TestDocumentResource extends BaseJerseyTest {
         Assert.assertEquals(1, json.getInt("file_count"));
         Assert.assertTrue(json.getBoolean("shared"));
         Assert.assertEquals("My super title document 1", json.getString("title"));
+        Assert.assertEquals("3_4", json.getString("gpascale"));
+        Assert.assertEquals("cit", json.getString("cmucollege"));
         Assert.assertEquals("John Smith", json.getString("name"));
         Assert.assertEquals("bachelor_degree", json.getString("highest_held_degree"));
         Assert.assertEquals("CMU", json.getString("previous_institute"));
@@ -311,6 +317,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .post(Entity.form(new Form()
                         .param("title", "My new super document 1")
                         .param("description", "My new super description for document\r\n\u00A0\u0009 1")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
@@ -332,6 +340,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, document1Token)
                 .post(Entity.form(new Form()
                         .param("title", "My super title document 2")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
@@ -881,6 +891,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, metadata1Token)
                 .put(Entity.form(new Form()
                         .param("title", "Metadata 1")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
@@ -933,6 +945,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .post(Entity.form(new Form()
                         .param("title", "Metadata 1")
                         .param("language", "eng")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
@@ -986,6 +1000,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .post(Entity.form(new Form()
                         .param("title", "Metadata 1")
                         .param("language", "eng")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")

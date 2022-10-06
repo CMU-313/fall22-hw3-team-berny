@@ -1,7 +1,5 @@
 package com.sismics.docs.rest;
 import java.util.*;
-
-
 import com.sismics.docs.rest.resource.ThirdPartyWebhookResource;
 import com.sismics.util.filter.TokenBasedSecurityFilter;
 import org.junit.Assert;
@@ -52,6 +50,8 @@ public class TestWebhookResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, webhook1Token)
                 .put(Entity.form(new Form()
                         .param("title", "Webhook document 1")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")

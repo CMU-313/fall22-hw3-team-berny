@@ -179,6 +179,8 @@ public class ClientUtil {
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
                         .param("description", "Document description")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("language", "eng")
                         .param("create_date", Long.toString(1664991975626L))), JsonObject.class);
         String documentId = json.getString("id");

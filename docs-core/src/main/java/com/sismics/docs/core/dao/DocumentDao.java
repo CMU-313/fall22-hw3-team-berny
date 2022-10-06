@@ -88,7 +88,7 @@ public class DocumentDao {
         }
 
         EntityManager em = ThreadLocalContext.get().getEntityManager();
-        StringBuilder sb = new StringBuilder("select distinct d.DOC_ID_C, d.DOC_TITLE_C, d.DOC_NAME_C, d.DOC_HIGHEST_HELD_DEGREE_C, d.DOC_PREVIOUS_INSTITUTE_C, d.DOC_DEGREE_DATE_D, d.DOC_DESCRIPTION_C, d.DOC_SUBJECT_C, d.DOC_IDENTIFIER_C, d.DOC_PUBLISHER_C, d.DOC_FORMAT_C, d.DOC_SOURCE_C, d.DOC_TYPE_C, d.DOC_COVERAGE_C, d.DOC_RIGHTS_C, d.DOC_CREATEDATE_D, d.DOC_UPDATEDATE_D, d.DOC_LANGUAGE_C, ");
+        StringBuilder sb = new StringBuilder("select distinct d.DOC_ID_C, d.DOC_TITLE_C, d.DOC_NAME_C,  d.DOC_GPASCALE_C, d.DOC_CMUCOLLEGE_C,d.DOC_HIGHEST_HELD_DEGREE_C, d.DOC_PREVIOUS_INSTITUTE_C, d.DOC_DEGREE_DATE_D, d.DOC_DESCRIPTION_C, d.DOC_SUBJECT_C, d.DOC_IDENTIFIER_C, d.DOC_PUBLISHER_C, d.DOC_FORMAT_C, d.DOC_SOURCE_C, d.DOC_TYPE_C, d.DOC_COVERAGE_C, d.DOC_RIGHTS_C, d.DOC_CREATEDATE_D, d.DOC_UPDATEDATE_D, d.DOC_LANGUAGE_C, ");
         sb.append(" (select count(s.SHA_ID_C) from T_SHARE s, T_ACL ac where ac.ACL_SOURCEID_C = d.DOC_ID_C and ac.ACL_TARGETID_C = s.SHA_ID_C and ac.ACL_DELETEDATE_D is null and s.SHA_DELETEDATE_D is null) shareCount, ");
         sb.append(" (select count(f.FIL_ID_C) from T_FILE f where f.FIL_DELETEDATE_D is null and f.FIL_IDDOC_C = d.DOC_ID_C) fileCount, ");
         sb.append(" u.USE_USERNAME_C ");
@@ -116,6 +116,8 @@ public class DocumentDao {
         Timestamp degree_date = ((Timestamp) o[i++]);
         documentDto.setDegreeDate(degree_date.getTime());
         documentDto.setDescription((String) o[i++]);
+        documentDto.setGPAScale((String) o[i++]);
+        documentDto.setCMUCollege((String) o[i++]);
         documentDto.setSubject((String) o[i++]);
         documentDto.setIdentifier((String) o[i++]);
         documentDto.setPublisher((String) o[i++]);
@@ -215,6 +217,8 @@ public class DocumentDao {
         documentDb.setPreviousInstitute(document.getPreviousInstitute());
         documentDb.setDegreeDate(document.getDegreeDate());
         documentDb.setDescription(document.getDescription());
+        documentDb.setGPAScale(document.getGPAScale());
+        documentDb.setCMUCollege(document.getCMUCollege());
         documentDb.setSubject(document.getSubject());
         documentDb.setIdentifier(document.getIdentifier());
         documentDb.setPublisher(document.getPublisher());
