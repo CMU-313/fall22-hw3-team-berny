@@ -17,8 +17,8 @@ angular.module('docs').controller('DocumentView', function ($scope, $rootScope, 
     Constant.RACES.forEach(element => {
       var s = element.toLowerCase();
       s = s.replace(" ", "_");
-      if($scope.document.country_of_residence == s){
-        $scope.document.country_of_residence = element;
+      if($scope.document.race == s){
+        $scope.document.race = element;
       }
     });
   }, function (response) {

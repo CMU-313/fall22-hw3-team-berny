@@ -1,5 +1,4 @@
 package com.sismics.docs.rest.resource;
-
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
