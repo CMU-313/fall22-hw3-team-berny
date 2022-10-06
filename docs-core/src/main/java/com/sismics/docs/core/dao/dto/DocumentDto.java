@@ -25,6 +25,16 @@ public class DocumentDto {
      * Description.
      */
     private String description;
+
+    /**
+     * GPA Scale.
+     */
+    private String gpascale;
+
+    /**
+     * CMU College.
+     */
+    private String cmucollege;
     
     /**
      * Subject.
@@ -142,6 +152,22 @@ public class DocumentDto {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getGPAScale() {
+        return gpascale;
+    }
+
+    public void setGPAScale(String gpascale) {
+        this.gpascale = gpascale;
+    }
+
+    public String getCMUCollege() {
+        return cmucollege;
+    }
+
+    public void setCMUCollege(String cmucollege) {
+        this.cmucollege = cmucollege;
     }
 
     public String getSubject() {

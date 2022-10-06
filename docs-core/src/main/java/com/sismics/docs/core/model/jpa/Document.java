@@ -52,6 +52,18 @@ public class Document implements Loggable {
      */
     @Column(name = "DOC_DESCRIPTION_C", length = 4000)
     private String description;
+
+    /**
+     * GPA Scale.
+     */
+    @Column(name = "DOC_GPASCALE_C", length = 100)
+    private String gpascale;
+
+    /**
+     * Description.
+     */
+    @Column(name = "DOC_CMUCOLLEGE_C", length = 100)
+    private String cmucollege;
     
     /**
      * Subject.
@@ -167,7 +179,23 @@ public class Document implements Loggable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getGPAScale() {
+        return gpascale;
+    }
+
+    public void setGPAScale(String gpascale) {
+        this.gpascale = gpascale;
+    }
     
+    public String getCMUCollege() {
+        return cmucollege;
+    }
+
+    public void setCMUCollege(String cmucollege) {
+        this.cmucollege = cmucollege;
+    }
+
     public String getSubject() {
         return subject;
     }

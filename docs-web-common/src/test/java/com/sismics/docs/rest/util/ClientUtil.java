@@ -175,6 +175,8 @@ public class ClientUtil {
                 .put(Entity.form(new Form()
                         .param("title", "Document Title")
                         .param("description", "Document description")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("language", "eng")
                         .param("create_date", Long.toString(new Date().getTime()))), JsonObject.class);
         String documentId = json.getString("id");
