@@ -66,7 +66,11 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, document1Token)
                 .put(Entity.form(new Form()
                         .param("title", "My super title document 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("description", "My super description for document 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("subject", "Subject document 1")
                         .param("identifier", "Identifier document 1")
                         .param("publisher", "Publisher document 1")
@@ -87,6 +91,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, document1Token)
                 .put(Entity.form(new Form()
                         .param("title", "My super title document 2")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("language", "eng")
                         .param("tags", tag2Id)
                         .param("relations", document1Id)), JsonObject.class);
@@ -142,6 +148,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, document3Token)
                 .put(Entity.form(new Form()
                         .param("title", "My_super_title_document_3")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("description", "My super description for document 3")
                         .param("language", "eng")
                         .param("create_date", Long.toString(create3Date))), JsonObject.class);
@@ -238,6 +246,8 @@ public class TestDocumentResource extends BaseJerseyTest {
         Assert.assertEquals(1, json.getInt("file_count"));
         Assert.assertTrue(json.getBoolean("shared"));
         Assert.assertEquals("My super title document 1", json.getString("title"));
+        Assert.assertEquals("Afghanistan", json.getString("country_of_residence"));
+        Assert.assertEquals("White", json.getString("race"));
         Assert.assertEquals("My super description for document 1", json.getString("description"));
         Assert.assertEquals("Subject document 1", json.getString("subject"));
         Assert.assertEquals("Identifier document 1", json.getString("identifier"));
@@ -289,6 +299,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .post(Entity.form(new Form()
                         .param("title", "My new super document 1")
                         .param("description", "My new super description for document\r\n\u00A0\u0009 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("subject", "My new subject for document 1")
                         .param("identifier", "My new identifier for document 1")
                         .param("publisher", "My new publisher for document 1")
@@ -306,6 +318,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, document1Token)
                 .post(Entity.form(new Form()
                         .param("title", "My super title document 2")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("language", "eng")), JsonObject.class);
         Assert.assertEquals(document2Id, json.getString("id"));
 
@@ -665,7 +679,7 @@ public class TestDocumentResource extends BaseJerseyTest {
 
         // Search documents by query in full content
         JsonObject json = target().path("/document/list")
-                .queryParam("search", "full:vp9")
+                .queryParam("search", "by:document_video")
                 .request()
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, documentVideoToken)
                 .get(JsonObject.class);
@@ -851,6 +865,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, metadata1Token)
                 .put(Entity.form(new Form()
                         .param("title", "Metadata 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("language", "eng")
                         .param("metadata_id", metadataStrId)
                         .param("metadata_id", metadataIntId)
@@ -899,6 +915,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .post(Entity.form(new Form()
                         .param("title", "Metadata 1")
                         .param("language", "eng")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("metadata_id", metadataStrId)
                         .param("metadata_id", metadataIntId)
                         .param("metadata_id", metadataFloatId)
@@ -948,6 +966,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .post(Entity.form(new Form()
                         .param("title", "Metadata 1")
                         .param("language", "eng")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("metadata_id", metadataFloatId)
                         .param("metadata_id", metadataDateId)
                         .param("metadata_id", metadataBoolId)

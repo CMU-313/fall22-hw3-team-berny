@@ -40,6 +40,8 @@ public class TestAclResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, acl1Token)
                 .put(Entity.form(new Form()
                         .param("title", "My super title document 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("language", "eng")
                         .param("create_date", Long.toString(new Date().getTime()))), JsonObject.class);
         String document1Id = json.getString("id");
@@ -158,7 +160,10 @@ public class TestAclResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, acl2Token)
                 .post(Entity.form(new Form()
                         .param("title", "My new super document 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("language", "eng")), JsonObject.class);
+
         Assert.assertEquals(document1Id, json.getString("id"));
 
         // Get the document as acl2
@@ -292,6 +297,8 @@ public class TestAclResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, acltag1Token)
                 .put(Entity.form(new Form()
                         .param("title", "My super document 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("tags", tag1Id)
                         .param("language", "eng")), JsonObject.class);
         String document1Id = json.getString("id");
@@ -338,8 +345,11 @@ public class TestAclResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, acltag2Token)
                 .post(Entity.form(new Form()
                         .param("title", "My super document 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("tags", tag1Id)
                         .param("language", "eng")));
+
         Assert.assertEquals(Status.FORBIDDEN.getStatusCode(), response.getStatus());
 
         // Add an ACL READ for acltag2 with acltag1 on tag1
@@ -371,6 +381,8 @@ public class TestAclResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, acltag2Token)
                 .post(Entity.form(new Form()
                         .param("title", "My super document 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("tags", tag1Id)
                         .param("language", "eng")));
         Assert.assertEquals(Status.FORBIDDEN.getStatusCode(), response.getStatus());
@@ -447,6 +459,8 @@ public class TestAclResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, acltag2Token)
                 .post(Entity.form(new Form()
                         .param("title", "My super document 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("tags", tag1Id)
                         .param("language", "eng")), JsonObject.class);
     }

@@ -81,7 +81,10 @@ public class DocumentResource extends BaseResource {
             MONTH_PARSER,
             DAY_PARSER};
     private static final DateTimeFormatter DATE_FORMATTER = new DateTimeFormatterBuilder().append( null, DATE_PARSERS).toFormatter();
-
+         /**
+     * List of applcant countries .
+     */
+    
     /**
      * Returns a document.
      *
@@ -168,6 +171,8 @@ public class DocumentResource extends BaseResource {
         JsonObjectBuilder document = Json.createObjectBuilder()
                 .add("id", documentDto.getId())
                 .add("title", documentDto.getTitle())
+                .add("country_of_residence", documentDto.getCountryOfResidence())
+                .add("race", documentDto.getRace())
                 .add("description", JsonUtil.nullable(documentDto.getDescription()))
                 .add("create_date", documentDto.getCreateTimestamp())
                 .add("update_date", documentDto.getUpdateTimestamp())
@@ -720,6 +725,8 @@ public class DocumentResource extends BaseResource {
     @PUT
     public Response add(
             @FormParam("title") String title,
+            @FormParam("country_of_residence") String country_of_residence,
+            @FormParam("race") String race,
             @FormParam("description") String description,
             @FormParam("subject") String subject,
             @FormParam("identifier") String identifier,
@@ -755,11 +762,20 @@ public class DocumentResource extends BaseResource {
         if (!Constants.SUPPORTED_LANGUAGES.contains(language)) {
             throw new ClientException("ValidationError", MessageFormat.format("{0} is not a supported language", language));
         }
-
+        /* validating if country input is valid */
+        if (country_of_residence != null && !Constants.COUNTRIES.contains(country_of_residence)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid country", country_of_residence));
+        }
+        /*validating if race input is valid */
+        if (race != null && !Constants.RACES.contains(race)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid race", race));
+        }
         // Create the document
         Document document = new Document();
         document.setUserId(principal.getId());
         document.setTitle(title);
+        document.setCountryOfResidence(country_of_residence);
+        document.setRace(race);
         document.setDescription(description);
         document.setSubject(subject);
         document.setIdentifier(identifier);
@@ -842,6 +858,8 @@ public class DocumentResource extends BaseResource {
     public Response update(
             @PathParam("id") String id,
             @FormParam("title") String title,
+            @FormParam("country_of_residence") String country_of_residence,
+            @FormDataParam("race") String race,
             @FormParam("description") String description,
             @FormParam("subject") String subject,
             @FormParam("identifier") String identifier,
@@ -877,6 +895,12 @@ public class DocumentResource extends BaseResource {
         if (language != null && !Constants.SUPPORTED_LANGUAGES.contains(language)) {
             throw new ClientException("ValidationError", MessageFormat.format("{0} is not a supported language", language));
         }
+        if (country_of_residence != null && !Constants.COUNTRIES.contains(country_of_residence)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid country", country_of_residence));
+        }
+        if (race != null && !Constants.RACES.contains(race)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid race", race));
+        }
         
         // Check write permission
         AclDao aclDao = new AclDao();
@@ -893,6 +917,8 @@ public class DocumentResource extends BaseResource {
         
         // Update the document
         document.setTitle(title);
+        document.setCountryOfResidence(country_of_residence);
+        document.setRace(race);
         document.setDescription(description);
         document.setSubject(subject);
         document.setIdentifier(identifier);
@@ -996,6 +1022,8 @@ public class DocumentResource extends BaseResource {
             document.setTitle(StringUtils.abbreviate(mailContent.getSubject(), 100));
         }
         document.setDescription(StringUtils.abbreviate(mailContent.getMessage(), 4000));
+        document.setCountryOfResidence("Afghanistan");
+        document.setRace("White");
         document.setSubject(StringUtils.abbreviate(mailContent.getSubject(), 500));
         document.setFormat("EML");
         document.setSource("Email");

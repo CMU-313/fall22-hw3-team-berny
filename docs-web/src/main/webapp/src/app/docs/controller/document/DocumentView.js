@@ -7,6 +7,20 @@ angular.module('docs').controller('DocumentView', function ($scope, $rootScope, 
   // Load document data from server
   Restangular.one('document', $stateParams.id).get().then(function (data) {
     $scope.document = data;
+    Constant.COUNTRIES.forEach(element => {
+      var s = element.toLowerCase();
+      s = s.replace(" ", "_");
+      if($scope.document.country_of_residence == s){
+        $scope.document.country_of_residence = element;
+      }
+    });
+    Constant.RACES.forEach(element => {
+      var s = element.toLowerCase();
+      s = s.replace(" ", "_");
+      if($scope.document.country_of_residence == s){
+        $scope.document.country_of_residence = element;
+      }
+    });
   }, function (response) {
     $scope.error = response;
   });

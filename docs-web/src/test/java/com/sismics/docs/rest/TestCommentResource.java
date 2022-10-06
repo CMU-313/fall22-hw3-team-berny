@@ -38,6 +38,8 @@ public class TestCommentResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, comment1Token)
                 .put(Entity.form(new Form()
                         .param("title", "My super title document 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("description", "My super description for document 1")
                         .param("language", "eng")
                         .param("create_date", Long.toString(create1Date))), JsonObject.class);
