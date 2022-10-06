@@ -1,4 +1,6 @@
 package com.sismics.docs.rest;
+import java.util.*;
+
 
 import com.sismics.util.filter.TokenBasedSecurityFilter;
 import org.junit.Assert;
@@ -42,6 +44,10 @@ public class TestAuditLogResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, auditlog1Token)
                 .put(Entity.form(new Form()
                         .param("title", "My super title document 1")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("description", "My super description for document 1")
                         .param("tags", tag1Id)
                         .param("language", "eng")

@@ -1,4 +1,5 @@
 package com.sismics.docs.core.dao.dto;
+import java.util.Date;  
 
 /**
  * Document DTO.
@@ -20,6 +21,26 @@ public class DocumentDto {
      * Title.
      */
     private String title;
+
+    /**
+     * Name.
+     */
+    private String name;
+
+    /**
+     * highest held degree.
+     */
+    private String highest_held_degree;
+
+    /**
+     * previously attended institute
+     */
+    private String previous_institute;
+
+    /**
+     * Date of degree acquisition.
+     */
+    private Long degree_date;
     
     /**
      * Description.
@@ -135,6 +156,39 @@ public class DocumentDto {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getHighestHeldDegree() {
+        return highest_held_degree;
+    }
+
+    public void setHighestHeldDegree(String highest_held_degree) {
+        this.highest_held_degree = highest_held_degree;
+    }
+
+    public String getPreviousInstitute() {
+        return previous_institute;
+    }
+
+    public void setPreviousInstitute(String previous_institute) {
+        this.previous_institute = previous_institute;
+    }
+
+    public Long getDegreeDate() {
+        return degree_date;
+    }
+
+    public void setDegreeDate(Long degree_date) {
+        this.degree_date = degree_date;
+    }
+
 
     public String getDescription() {
         return description;

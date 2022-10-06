@@ -1,4 +1,6 @@
 package com.sismics.docs.rest;
+import java.util.*;
+
 
 import javax.json.JsonObject;
 import javax.ws.rs.client.Entity;

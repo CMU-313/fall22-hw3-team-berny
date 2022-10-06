@@ -1,4 +1,6 @@
 package com.sismics.docs.rest;
+import java.util.*;
+
 
 import com.google.common.io.ByteStreams;
 import com.google.common.io.Resources;
@@ -66,11 +68,15 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, document1Token)
                 .put(Entity.form(new Form()
                         .param("title", "My super title document 1")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("description", "My super description for document 1")
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
-                        .param("degree_date", "04/10/2022")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("subject", "Subject document 1")
                         .param("identifier", "Identifier document 1")
                         .param("publisher", "Publisher document 1")
@@ -91,6 +97,10 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, document1Token)
                 .put(Entity.form(new Form()
                         .param("title", "My super title document 2")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("language", "eng")
                         .param("tags", tag2Id)
                         .param("relations", document1Id)), JsonObject.class);
@@ -146,6 +156,10 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, document3Token)
                 .put(Entity.form(new Form()
                         .param("title", "My_super_title_document_3")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("description", "My super description for document 3")
                         .param("language", "eng")
                         .param("create_date", Long.toString(create3Date))), JsonObject.class);
@@ -242,6 +256,10 @@ public class TestDocumentResource extends BaseJerseyTest {
         Assert.assertEquals(1, json.getInt("file_count"));
         Assert.assertTrue(json.getBoolean("shared"));
         Assert.assertEquals("My super title document 1", json.getString("title"));
+        Assert.assertEquals("John Smith", json.getString("name"));
+        Assert.assertEquals("bachelor_degree", json.getString("highest_held_degree"));
+        Assert.assertEquals("CMU", json.getString("previous_institute"));
+        Assert.assertEquals(Long.toString(1664991975626L), json.get("degree_date").toString());
         Assert.assertEquals("My super description for document 1", json.getString("description"));
         Assert.assertEquals("Subject document 1", json.getString("subject"));
         Assert.assertEquals("Identifier document 1", json.getString("identifier"));
@@ -296,7 +314,7 @@ public class TestDocumentResource extends BaseJerseyTest {
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
-                        .param("degree_date", "04/10/2022")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("subject", "My new subject for document 1")
                         .param("identifier", "My new identifier for document 1")
                         .param("publisher", "My new publisher for document 1")
@@ -317,7 +335,7 @@ public class TestDocumentResource extends BaseJerseyTest {
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
-                        .param("degree_date", "04/10/2022")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("language", "eng")), JsonObject.class);
         Assert.assertEquals(document2Id, json.getString("id"));
 
@@ -863,6 +881,10 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, metadata1Token)
                 .put(Entity.form(new Form()
                         .param("title", "Metadata 1")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("language", "eng")
                         .param("metadata_id", metadataStrId)
                         .param("metadata_id", metadataIntId)
@@ -914,7 +936,7 @@ public class TestDocumentResource extends BaseJerseyTest {
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
-                        .param("degree_date", "04/10/2022")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("metadata_id", metadataStrId)
                         .param("metadata_id", metadataIntId)
                         .param("metadata_id", metadataFloatId)
@@ -967,7 +989,7 @@ public class TestDocumentResource extends BaseJerseyTest {
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
-                        .param("degree_date", "04/10/2022")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("metadata_id", metadataFloatId)
                         .param("metadata_id", metadataDateId)
                         .param("metadata_id", metadataBoolId)
