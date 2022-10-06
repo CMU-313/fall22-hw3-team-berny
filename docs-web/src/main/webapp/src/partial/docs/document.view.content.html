@@ -6,6 +6,16 @@
   <dd ng-if="document.cmucollege">{{ document.cmucollege }}</dd>
   <dt ng-if="document.subject">{{ 'document.subject' | translate }}</dt>
   <dd ng-if="document.subject">{{ document.subject }}</dd>
+  <dt ng-if="document.name">Name</dt>
+  <dd ng-if="document.name">{{ document.name }}</dd>
+  <dt ng-if="document.highest_held_degree">Highest Held Degree</dt>
+  <dd ng-if="document.highest_held_degree">{{ document.highest_held_degree }}</dd>
+  <dt ng-if="document.degree_date">Date of Degree</dt>
+  <dd ng-if="document.degree_date">{{ document.degree_date }}</dd>
+  <dt ng-if="document.previous_institute">Previous Institute</dt>
+  <dd ng-if="document.previous_institute">{{ document.previous_institute }}</dd>
+  <dt ng-if="document.subject">{{ 'document.subject' | translate }}</dt>
+  <dd ng-if="document.subject">{{ document.subject }}</dd>
   <dt ng-if="document.identifier">{{ 'document.identifier' | translate }}</dt>
   <dd ng-if="document.identifier">{{ document.identifier }}</dd>
   <dt ng-if="document.publisher">{{ 'document.publisher' | translate }}</dt>

@@ -52,8 +52,12 @@ public class TestWebhookResource extends BaseJerseyTest {
                         .param("title", "Webhook document 1")
                         .param("gpascale", "3_4")
                         .param("cmucollege", "cit")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("language", "eng")
-                        .param("create_date", Long.toString(new Date().getTime()))), JsonObject.class);
+                        .param("create_date", Long.toString(1664991975626L))), JsonObject.class);
         String document1Id = json.getString("id");
 
         // Check the webhook payload

@@ -60,9 +60,18 @@
       <div class="form-group" ng-class="{ 'has-error': !documentForm.degree_date.$valid && documentForm.$dirty }">
         <label class="col-sm-2 control-label" for="inputDegreeDate">Date of degree</label>
         <div class="col-sm-10">
-          <input required class="form-control" type="date" id="inputDegreeDate"
-            ng-attr-placeholder="Date of last degree acquisition" name="degree_date" ng-model="document.degree_date" autocomplete="off"
-            ng-disabled="fileIsUploading"/>
+          <div class="input-group">
+            <input type="text" id="inputDegreeDate" name="degree_date"
+                   current-text="{{ 'directive.datepicker.current' | translate }}"
+                   clear-text="{{ 'directive.datepicker.clear' | translate }}"
+                   close-text="{{ 'directive.datepicker.close' | translate }}"
+                   uib-datepicker-popup="{{ dateFormat }}" class="form-control"
+                   ng-model="document.degree_date" datepicker-options="{ startingDay: 1, showWeeks: false }"
+                   is-open="datepickerOpened_1" ng-disabled="fileIsUploading" />
+                  <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="datepickerOpened_1 = true" ng-disabled="fileIsUploading"><i class="fas fa-calendar"></i></button>
+                </span>
+          </div>
         </div>
       </div>
         <!-- gpa scale: float, options  -->

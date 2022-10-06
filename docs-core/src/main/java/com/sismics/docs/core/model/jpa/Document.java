@@ -48,6 +48,30 @@ public class Document implements Loggable {
     private String title;
     
     /**
+     * Name.
+     */
+    @Column(name = "DOC_NAME_C", nullable = false, length = 100)
+    private String name;
+
+    /**
+     * highest held degree.
+     */
+    @Column(name = "DOC_HIGHEST_HELD_DEGREE_C", length = 100)
+    private String highest_held_degree;
+
+    /**
+     * previously attended institute
+     */
+    @Column(name = "DOC_PREVIOUS_INSTITUTE_C", length = 100)
+    private String previous_institute;
+
+    /**
+     * Date of degree acquisition.
+     */
+    @Column(name = "DOC_DEGREE_DATE_D")
+    private Date degree_date;
+
+    /**
      * Description.
      */
     @Column(name = "DOC_DESCRIPTION_C", length = 4000)
@@ -171,6 +195,39 @@ public class Document implements Loggable {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getHighestHeldDegree() {
+        return highest_held_degree;
+    }
+
+    public void setHighestHeldDegree(String highest_held_degree) {
+        this.highest_held_degree = highest_held_degree;
+    }
+
+    public String getPreviousInstitute() {
+        return previous_institute;
+    }
+
+    public void setPreviousInstitute(String previous_institute) {
+        this.previous_institute = previous_institute;
+    }
+
+    public Date getDegreeDate() {
+        return degree_date;
+    }
+
+    public void setDegreeDate(Date degree_date) {
+        this.degree_date = degree_date;
+    }
+
 
     public String getDescription() {
         return description;
