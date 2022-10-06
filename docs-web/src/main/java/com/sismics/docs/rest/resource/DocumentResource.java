@@ -81,9 +81,6 @@ public class DocumentResource extends BaseResource {
             MONTH_PARSER,
             DAY_PARSER};
     private static final DateTimeFormatter DATE_FORMATTER = new DateTimeFormatterBuilder().append( null, DATE_PARSERS).toFormatter();
-         /**
-     * List of applcant countries .
-     */
     
     /**
      * Returns a document.
