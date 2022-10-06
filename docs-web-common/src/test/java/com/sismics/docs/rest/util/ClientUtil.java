@@ -174,6 +174,8 @@ public class ClientUtil {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, token)
                 .put(Entity.form(new Form()
                         .param("title", "Document Title")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("description", "Document description")
                         .param("language", "eng")
                         .param("create_date", Long.toString(new Date().getTime()))), JsonObject.class);

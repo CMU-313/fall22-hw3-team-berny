@@ -20,6 +20,17 @@ public class DocumentDto {
      * Title.
      */
     private String title;
+
+    /**
+     * Country of Residence
+     */
+    private String country_of_residence;
+
+    /**
+     * Race
+     */
+    private String race;
+
     
     /**
      * Description.
@@ -136,6 +147,21 @@ public class DocumentDto {
         this.title = title;
     }
 
+    public String getCountryOfResidence(){
+        return country_of_residence;
+    }
+
+    public void setCountryOfResidence(String country_of_residence){
+        this.country_of_residence = country_of_residence;
+    }
+
+    public String getRace(){
+        return race;
+    }
+
+    public void setRace(String race){
+        this.race = race;
+    }
     public String getDescription() {
         return description;
     }
