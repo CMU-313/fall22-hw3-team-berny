@@ -69,8 +69,6 @@ public class TestDocumentResource extends BaseJerseyTest {
                         .param("country_of_residence", "Afghanistan")
                         .param("race", "White")
                         .param("description", "My super description for document 1")
-                        .param("country_of_residence", "Afghanistan")
-                        .param("race", "White")
                         .param("subject", "Subject document 1")
                         .param("identifier", "Identifier document 1")
                         .param("publisher", "Publisher document 1")

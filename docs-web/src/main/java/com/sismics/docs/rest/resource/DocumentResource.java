@@ -167,8 +167,8 @@ public class DocumentResource extends BaseResource {
         JsonObjectBuilder document = Json.createObjectBuilder()
                 .add("id", documentDto.getId())
                 .add("title", documentDto.getTitle())
-                .add("country_of_residence", documentDto.getCountryOfResidence())
-                .add("race", documentDto.getRace())
+                .add("country_of_residence", JsonUtil.nullable(documentDto.getCountryOfResidence()))
+                .add("race", JsonUtil.nullable(documentDto.getRace()))
                 .add("description", JsonUtil.nullable(documentDto.getDescription()))
                 .add("create_date", documentDto.getCreateTimestamp())
                 .add("update_date", documentDto.getUpdateTimestamp())
@@ -855,7 +855,7 @@ public class DocumentResource extends BaseResource {
             @PathParam("id") String id,
             @FormParam("title") String title,
             @FormParam("country_of_residence") String country_of_residence,
-            @FormDataParam("race") String race,
+            @FormParam("race") String race,
             @FormParam("description") String description,
             @FormParam("subject") String subject,
             @FormParam("identifier") String identifier,

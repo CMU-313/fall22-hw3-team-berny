@@ -67,6 +67,8 @@
     "current_step_name": "Current step",
     "title": "Title",
     "description": "Description",
+    "country_of_residence": "Country of residence",
+    "race": "race",
     "contributors": "Contributors",
     "language": "Language",
     "creation_date": "Creation date",
