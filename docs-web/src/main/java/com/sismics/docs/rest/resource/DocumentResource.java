@@ -169,6 +169,8 @@ public class DocumentResource extends BaseResource {
                 .add("id", documentDto.getId())
                 .add("title", documentDto.getTitle())
                 .add("description", JsonUtil.nullable(documentDto.getDescription()))
+                .add("gpascale", documentDto.getGPAScale())
+                .add("cmucollege", documentDto.getCMUCollege())
                 .add("create_date", documentDto.getCreateTimestamp())
                 .add("update_date", documentDto.getUpdateTimestamp())
                 .add("language", documentDto.getLanguage())
@@ -721,6 +723,10 @@ public class DocumentResource extends BaseResource {
     public Response add(
             @FormParam("title") String title,
             @FormParam("description") String description,
+            /* new attributes added by Emilie */
+            @FormParam("gpascale") String gpascale,
+            @FormParam("cmucollege") String cmucollege,
+            /* ----------------------------- */
             @FormParam("subject") String subject,
             @FormParam("identifier") String identifier,
             @FormParam("publisher") String publisher,
@@ -756,11 +762,22 @@ public class DocumentResource extends BaseResource {
             throw new ClientException("ValidationError", MessageFormat.format("{0} is not a supported language", language));
         }
 
+        // validating if gpa scale is valid
+        if (gpascale != null && !Constants.GPASCALE.contains(gpascale)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid GPA scale", gpascale));
+        }
+        // validating if cmu college applying to is valid
+        if (cmucollege != null && !Constants.CMUCOLLEGE.contains(cmucollege)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid CMU college to apply to", cmucollege));
+        }
+
         // Create the document
         Document document = new Document();
         document.setUserId(principal.getId());
         document.setTitle(title);
         document.setDescription(description);
+        document.setGPAScale(gpascale);
+        document.setCMUCollege(cmucollege);
         document.setSubject(subject);
         document.setIdentifier(identifier);
         document.setPublisher(publisher);
@@ -842,11 +859,9 @@ public class DocumentResource extends BaseResource {
     public Response update(
             @PathParam("id") String id,
             @FormParam("title") String title,
-            /* new attribues added by Rui */
-            @FormParam("name") String name,
-            @FormParam("highest_held_degree") String highest_held_degree,
-            @FormParam("previous_institute") String previous_institute,
-            @FormParam("degree_date") String degree_date,
+            /* new attribues added by Emilie */
+            @FormParam("gpascale") String gpascale,
+            @FormParam("cmucollege") String cmucollege,
             /* ----------------------------- */
             @FormParam("description") String description,
             @FormParam("subject") String subject,
@@ -870,14 +885,6 @@ public class DocumentResource extends BaseResource {
         // Validate input data
         title = ValidationUtil.validateLength(title, "title", 1, 100, false);
         
-        name = ValidationUtil.validateLength(name, "name", 1, 100, false);
-        previous_institute = ValidationUtil.validateLength(previous_institute, "previous_institute", 1, 100, false);
-        try {
-            Date parsed_degree_date=new SimpleDateFormat("dd/MM/yyyy").parse(degree_date);
-        } catch (Exception e) {
-            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid date", degree_date));
-        }
-
         language = ValidationUtil.validateLength(language, "language", 3, 7, false);
         description = ValidationUtil.validateLength(description, "description", 0, 4000, true);
         subject = ValidationUtil.validateLength(subject, "subject", 0, 500, true);
@@ -892,11 +899,15 @@ public class DocumentResource extends BaseResource {
         if (language != null && !Constants.SUPPORTED_LANGUAGES.contains(language)) {
             throw new ClientException("ValidationError", MessageFormat.format("{0} is not a supported language", language));
         }
-        /* validating if degree input is valid */
-        if (highest_held_degree != null && !Constants.DEGREES.contains(highest_held_degree)) {
-            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid degree", highest_held_degree));
+        /* validating if gpascale input is valid */
+        if (gpascale != null && !Constants.GPASCALE.contains(gpascale)) { 
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid GPA scale", gpascale));
         }
-        
+
+        /* validating if college applying to input is valid */
+        if (cmucollege != null && !Constants.CMUCOLLEGE.contains(cmucollege)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid CMU college to apply to", cmucollege));
+        }
 
         // Check write permission
         AclDao aclDao = new AclDao();
@@ -914,6 +925,8 @@ public class DocumentResource extends BaseResource {
         // Update the document
         document.setTitle(title);
         document.setDescription(description);
+        document.setGPAScale(gpascale);
+        document.setCMUCollege(cmucollege);
         document.setSubject(subject);
         document.setIdentifier(identifier);
         document.setPublisher(publisher);
@@ -1016,6 +1029,8 @@ public class DocumentResource extends BaseResource {
             document.setTitle(StringUtils.abbreviate(mailContent.getSubject(), 100));
         }
         document.setDescription(StringUtils.abbreviate(mailContent.getMessage(), 4000));
+        document.setGPAScale("3.0_4.0");
+        document.setCMUCollege("cit");
         document.setSubject(StringUtils.abbreviate(mailContent.getSubject(), 500));
         document.setFormat("EML");
         document.setSource("Email");

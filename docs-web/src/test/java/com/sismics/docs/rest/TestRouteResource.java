@@ -1,5 +1,5 @@
 package com.sismics.docs.rest;
-
+import java.util.*;
 import com.sismics.util.filter.TokenBasedSecurityFilter;
 import org.junit.Assert;
 import org.junit.Test;
@@ -62,6 +62,8 @@ public class TestRouteResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, route1Token)
                 .put(Entity.form(new Form()
                         .param("title", "My super title document 1")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("language", "eng")), JsonObject.class);
         String document1Id = json.getString("id");
 
@@ -396,6 +398,8 @@ public class TestRouteResource extends BaseJerseyTest {
                 .put(Entity.form(new Form()
                         .param("title", "My super title document 1")
                         .param("description", "My super description for document 1")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("tags", tagPendingId)
                         .param("language", "eng")), JsonObject.class);
         String document1Id = json.getString("id");
@@ -453,6 +457,8 @@ public class TestRouteResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, adminToken)
                 .put(Entity.form(new Form()
                         .param("title", "My super title document 2")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("tags", tagPendingId)
                         .param("language", "eng")), JsonObject.class);
         String document2Id = json.getString("id");

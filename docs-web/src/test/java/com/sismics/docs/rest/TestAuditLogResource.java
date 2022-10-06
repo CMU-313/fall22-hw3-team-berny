@@ -1,5 +1,5 @@
 package com.sismics.docs.rest;
-
+import java.util.*;
 import com.sismics.util.filter.TokenBasedSecurityFilter;
 import org.junit.Assert;
 import org.junit.Test;
@@ -43,6 +43,8 @@ public class TestAuditLogResource extends BaseJerseyTest {
                 .put(Entity.form(new Form()
                         .param("title", "My super title document 1")
                         .param("description", "My super description for document 1")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("tags", tag1Id)
                         .param("language", "eng")
                         .param("create_date", Long.toString(create1Date))), JsonObject.class);

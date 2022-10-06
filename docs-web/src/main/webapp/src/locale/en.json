@@ -67,6 +67,8 @@
     "current_step_name": "Current step",
     "title": "Title",
     "description": "Description",
+    "gpascale": "GPA Scale",
+    "cmucollege": "College Applying to",
     "contributors": "Contributors",
     "language": "Language",
     "creation_date": "Creation date",

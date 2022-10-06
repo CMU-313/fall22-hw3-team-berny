@@ -1,5 +1,9 @@
 <p class="well-sm" ng-bind-html="document.description"></p>
 <dl class="dl-horizontal">
+  <dt ng-if="document.gpascale">GPA Scale</dt>
+  <dd ng-if="document.gpascale">{{ document.gpascale }}</dd>
+  <dt ng-if="document.cmucollege">CMU College</dt>
+  <dd ng-if="document.cmucollege">{{ document.cmucollege }}</dd>
   <dt ng-if="document.subject">{{ 'document.subject' | translate }}</dt>
   <dd ng-if="document.subject">{{ document.subject }}</dd>
   <dt ng-if="document.identifier">{{ 'document.identifier' | translate }}</dt>

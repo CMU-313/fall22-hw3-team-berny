@@ -1,5 +1,5 @@
 package com.sismics.docs.rest;
-
+import java.util.*;
 import java.util.Date;
 
 import javax.json.JsonObject;
@@ -39,6 +39,8 @@ public class TestCommentResource extends BaseJerseyTest {
                 .put(Entity.form(new Form()
                         .param("title", "My super title document 1")
                         .param("description", "My super description for document 1")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("language", "eng")
                         .param("create_date", Long.toString(create1Date))), JsonObject.class);
         String document1Id = json.getString("id");
