@@ -46,6 +46,18 @@ public class Document implements Loggable {
      */
     @Column(name = "DOC_TITLE_C", nullable = false, length = 100)
     private String title;
+
+    @Column(name = "DOC_GRE_C",length=100)
+    private Integer gre;
+    /**
+     * GRE score.
+     */
+
+     @Column(name="DOC_ADDRESS_C", length=100)
+     private String address;
+     /**
+      * address.
+      */
     
     /**
      * Description.
@@ -158,6 +170,21 @@ public class Document implements Loggable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Integer getGRE(){
+        return gre;
+    }
+    public void setGRE(Integer gre){
+        this.gre = gre;
+    }
+
+    public String getAddress(){
+        return address;
+    }
+
+    public void setAddress(String address){
+        this.address = address;
     }
 
     public String getDescription() {

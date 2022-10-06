@@ -10,7 +10,8 @@ angular.module('docs').controller('DocumentView', function ($scope, $rootScope, 
   }, function (response) {
     $scope.error = response;
   });
-
+ 
+  
   // Load comments from server
   Restangular.one('comment', $stateParams.id).get().then(function (data) {
     $scope.comments = data.comments;

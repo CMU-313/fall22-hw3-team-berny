@@ -24,6 +24,16 @@ public class DocumentDto {
     /**
      * Description.
      */
+    private Integer GRE;
+    /**
+     * GRE score.
+     */
+
+    private String Address;
+    /**
+     * Address.
+     */
+
     private String description;
     
     /**
@@ -134,6 +144,22 @@ public class DocumentDto {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Integer getGRE() {
+        return gre;
+    }
+    
+    public void setGRE() {
+        this.gre = gre;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void getAddress() {
+        this.address = address;
     }
 
     public String getDescription() {

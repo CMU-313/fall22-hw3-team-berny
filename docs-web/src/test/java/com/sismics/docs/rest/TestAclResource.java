@@ -162,6 +162,8 @@ public class TestAclResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", "04/10/2022")
+                        .param(name: "gre", value: "130")
+                        .param(name: "address", value: "11 Hillcrest Drive, Great Neck, NY 11021")
                         .param("language", "eng")), JsonObject.class);
         Assert.assertEquals(document1Id, json.getString("id"));
 
@@ -346,6 +348,8 @@ public class TestAclResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", "04/10/2022")
+                        .param(name: "gre", value: "130")
+                        .param(name: "address", value: "11 Hillcrest Drive, Great Neck, NY 11021")
                         .param("tags", tag1Id)
                         .param("language", "eng")));
         Assert.assertEquals(Status.FORBIDDEN.getStatusCode(), response.getStatus());
@@ -384,6 +388,8 @@ public class TestAclResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", "04/10/2022")
+                        .param(name: "gre", value: "130")
+                        .param(name: "address", value: "11 Hillcrest Drive, Great Neck, NY 11021")
                         .param("tags", tag1Id)
                         .param("language", "eng")));
         Assert.assertEquals(Status.FORBIDDEN.getStatusCode(), response.getStatus());
@@ -464,6 +470,8 @@ public class TestAclResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", "04/10/2022")
+                        .param(name: "gre", value: "130")
+                        .param(name: "address", value: "11 Hillcrest Drive, Great Neck, NY 11021")
                         .param("tags", tag1Id)
                         .param("language", "eng")), JsonObject.class);
     }

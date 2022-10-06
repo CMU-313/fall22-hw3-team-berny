@@ -146,8 +146,10 @@ public class TestTagResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", "04/10/2022")
+                        .param(name: "gre", value: "130")
+                        .param(name: "address", value: "11 Hillcrest Drive, Great Neck, NY 11021")
                         .param("tags", tag3Id)
-                        .param("tags", tag4Id)));
+                        .param("tags", tag4Id)));                        
         Assert.assertEquals(Status.OK, Status.fromStatusCode(response.getStatus()));
         
         // Check tags on a document
@@ -169,6 +171,8 @@ public class TestTagResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", "04/10/2022")
+                        .param(name: "gre", value: "130")
+                        .param(name: "address", value: "11 Hillcrest Drive, Great Neck, NY 11021")
                         .param("tags", tag4Id)));
         Assert.assertEquals(Status.OK, Status.fromStatusCode(response.getStatus()));
         

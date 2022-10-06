@@ -109,6 +109,8 @@ public class DocumentDao {
         int i = 0;
         documentDto.setId((String) o[i++]);
         documentDto.setTitle((String) o[i++]);
+        documentDto.setGRE((int) o[i++]);
+        documentDto.setAddress((String) o[i++]);
         documentDto.setDescription((String) o[i++]);
         documentDto.setSubject((String) o[i++]);
         documentDto.setIdentifier((String) o[i++]);
@@ -201,9 +203,11 @@ public class DocumentDao {
         TypedQuery<Document> q = em.createQuery("select d from Document d where d.id = :id and d.deleteDate is null", Document.class);
         q.setParameter("id", document.getId());
         Document documentDb = q.getSingleResult();
-
+f
         // Update the document
         documentDb.setTitle(document.getTitle());
+        documentDb.setGRE(document.getGRE());
+        documentDb.setAddresss(document.getAddress());
         documentDb.setDescription(document.getDescription());
         documentDb.setSubject(document.getSubject());
         documentDb.setIdentifier(document.getIdentifier());

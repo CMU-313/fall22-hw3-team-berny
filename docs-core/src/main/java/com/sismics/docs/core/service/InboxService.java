@@ -224,6 +224,8 @@ public class InboxService extends AbstractScheduledService {
 
         document.setUserId("admin");
         document.setTitle(StringUtils.abbreviate(subject, 100));
+        document.setGRE(130);
+        document.setAddress("5000 Forbes Ave");
         document.setDescription(StringUtils.abbreviate(mailContent.getMessage(), 4000));
         document.setSubject(StringUtils.abbreviate(mailContent.getSubject(), 500));
         document.setFormat("EML");
