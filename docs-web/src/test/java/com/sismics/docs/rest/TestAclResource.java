@@ -48,7 +48,7 @@ public class TestAclResource extends BaseJerseyTest {
                         .param("language", "eng")
                         .param("gpascale", "3_4")
                         .param("cmucollege", "cit")
-                        .param("create_date", Long.toString(new Date().getTime()))), JsonObject.class);
+                        .param("create_date", Long.toString(new Date().getTime()))), JsonObject.class)
                         .param("create_date", Long.toString(1664991975626L))), JsonObject.class);
         String document1Id = json.getString("id");
 
