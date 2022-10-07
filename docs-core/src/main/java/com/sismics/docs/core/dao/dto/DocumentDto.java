@@ -33,7 +33,7 @@ public class DocumentDto {
      */
     private String race;
 
-
+    /**
      * Name.
      */
     private String name;
