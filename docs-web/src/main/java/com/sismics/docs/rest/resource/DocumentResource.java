@@ -1,5 +1,4 @@
 package com.sismics.docs.rest.resource;
-
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
@@ -81,7 +80,7 @@ public class DocumentResource extends BaseResource {
             MONTH_PARSER,
             DAY_PARSER};
     private static final DateTimeFormatter DATE_FORMATTER = new DateTimeFormatterBuilder().append( null, DATE_PARSERS).toFormatter();
-
+    
     /**
      * Returns a document.
      *
@@ -168,6 +167,8 @@ public class DocumentResource extends BaseResource {
         JsonObjectBuilder document = Json.createObjectBuilder()
                 .add("id", documentDto.getId())
                 .add("title", documentDto.getTitle())
+                .add("country_of_residence", JsonUtil.nullable(documentDto.getCountryOfResidence()))
+                .add("race", JsonUtil.nullable(documentDto.getRace()))
                 .add("name", documentDto.getName())
                 .add("highest_held_degree", documentDto.getHighestHeldDegree())
                 .add("degree_date", documentDto.getDegreeDate())
@@ -726,6 +727,8 @@ public class DocumentResource extends BaseResource {
     @PUT
     public Response add(
             @FormParam("title") String title,
+            @FormParam("country_of_residence") String country_of_residence,
+            @FormParam("race") String race,
             @FormParam("description") String description,
             /* new attributes added by Emilie */
             @FormParam("gpascale") String gpascale,
@@ -774,6 +777,16 @@ public class DocumentResource extends BaseResource {
         if (!Constants.SUPPORTED_LANGUAGES.contains(language)) {
             throw new ClientException("ValidationError", MessageFormat.format("{0} is not a supported language", language));
         }
+
+        /* validating if country input is valid */
+        if (country_of_residence != null && !Constants.COUNTRIES.contains(country_of_residence)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid country", country_of_residence));
+        }
+        /*validating if race input is valid */
+        if (race != null && !Constants.RACES.contains(race)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid race", race));
+        }
+
         /* validating if degree input is valid */
         if (highest_held_degree != null && !Constants.DEGREES.contains(highest_held_degree)) {
             throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid degree", highest_held_degree));
@@ -793,6 +806,8 @@ public class DocumentResource extends BaseResource {
         Document document = new Document();
         document.setUserId(principal.getId());
         document.setTitle(title);
+        document.setCountryOfResidence(country_of_residence);
+        document.setRace(race);
         document.setName(name);
         document.setHighestHeldDegree(highest_held_degree);
         document.setDegreeDate(degree_date);
@@ -881,6 +896,8 @@ public class DocumentResource extends BaseResource {
     public Response update(
             @PathParam("id") String id,
             @FormParam("title") String title,
+            @FormParam("country_of_residence") String country_of_residence,
+            @FormParam("race") String race,
             /* new attribues added by Emilie */
             @FormParam("gpascale") String gpascale,
             @FormParam("cmucollege") String cmucollege,
@@ -929,6 +946,15 @@ public class DocumentResource extends BaseResource {
         if (language != null && !Constants.SUPPORTED_LANGUAGES.contains(language)) {
             throw new ClientException("ValidationError", MessageFormat.format("{0} is not a supported language", language));
         }
+
+        if (country_of_residence != null && !Constants.COUNTRIES.contains(country_of_residence)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid country", country_of_residence));
+        }
+        if (race != null && !Constants.RACES.contains(race)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid race", race));
+        }
+        
+
         /* validating if gpascale input is valid */
         if (gpascale != null && !Constants.GPASCALE.contains(gpascale)) { 
             throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid GPA scale", gpascale));
@@ -954,6 +980,8 @@ public class DocumentResource extends BaseResource {
         
         // Update the document
         document.setTitle(title);
+        document.setCountryOfResidence(country_of_residence);
+        document.setRace(race);
         document.setName(name);
         document.setHighestHeldDegree(highest_held_degree);
         document.setDegreeDate(degree_date);
@@ -1063,6 +1091,8 @@ public class DocumentResource extends BaseResource {
             document.setTitle(StringUtils.abbreviate(mailContent.getSubject(), 100));
         }
         document.setDescription(StringUtils.abbreviate(mailContent.getMessage(), 4000));
+        document.setCountryOfResidence("Afghanistan");
+        document.setRace("White");
         document.setGPAScale("3.0_4.0");
         document.setCMUCollege("cit");
         document.setName("Mail");

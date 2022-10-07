@@ -3,7 +3,7 @@ import java.util.*;
 import com.sismics.util.filter.TokenBasedSecurityFilter;
 import org.junit.Assert;
 import org.junit.Test;
-
+import java.util.*;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.ws.rs.client.Entity;
@@ -42,6 +42,8 @@ public class TestAuditLogResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, auditlog1Token)
                 .put(Entity.form(new Form()
                         .param("title", "My super title document 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")

@@ -463,6 +463,8 @@ public class TestFileResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, fileQuotaToken)
                 .put(Entity.form(new Form()
                         .param("title", "File test document 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("gpascale", "3_4")
                         .param("cmucollege", "cit")
                         .param("name", "John Smith")

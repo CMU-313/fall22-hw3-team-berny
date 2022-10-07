@@ -23,6 +23,17 @@ public class DocumentDto {
     private String title;
 
     /**
+
+     * Country of Residence
+     */
+    private String country_of_residence;
+
+    /**
+     * Race
+     */
+    private String race;
+
+    /**
      * Name.
      */
     private String name;
@@ -41,6 +52,7 @@ public class DocumentDto {
      * Date of degree acquisition.
      */
     private Long degree_date;
+
     
     /**
      * Description.
@@ -167,6 +179,22 @@ public class DocumentDto {
         this.title = title;
     }
 
+    public String getCountryOfResidence(){
+        return country_of_residence;
+    }
+
+    public void setCountryOfResidence(String country_of_residence){
+        this.country_of_residence = country_of_residence;
+    }
+
+    public String getRace(){
+        return race;
+    }
+
+    public void setRace(String race){
+        this.race = race;
+    }
+
     public String getName() {
         return name;
     }
@@ -198,7 +226,6 @@ public class DocumentDto {
     public void setDegreeDate(Long degree_date) {
         this.degree_date = degree_date;
     }
-
 
     public String getDescription() {
         return description;

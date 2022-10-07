@@ -4,7 +4,7 @@ import java.util.*;
 import com.sismics.util.filter.TokenBasedSecurityFilter;
 import org.junit.Assert;
 import org.junit.Test;
-
+import java.util.*;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.ws.rs.client.Entity;
@@ -41,6 +41,8 @@ public class TestAclResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, acl1Token)
                 .put(Entity.form(new Form()
                         .param("title", "My super title document 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
@@ -165,6 +167,8 @@ public class TestAclResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, acl2Token)
                 .post(Entity.form(new Form()
                         .param("title", "My new super document 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("gpascale", "3_4")
                         .param("cmucollege", "cit")
                         .param("name", "John Smith")
@@ -172,6 +176,7 @@ public class TestAclResource extends BaseJerseyTest {
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
                         .param("language", "eng")), JsonObject.class);
+
         Assert.assertEquals(document1Id, json.getString("id"));
 
         // Get the document as acl2
@@ -305,6 +310,8 @@ public class TestAclResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, acltag1Token)
                 .put(Entity.form(new Form()
                         .param("title", "My super document 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("gpascale", "3_4")
                         .param("cmucollege", "cit")
                         .param("name", "John Smith")
@@ -357,6 +364,8 @@ public class TestAclResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, acltag2Token)
                 .post(Entity.form(new Form()
                         .param("title", "My super document 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("gpascale", "3_4")
                         .param("cmucollege", "cit")
                         .param("name", "John Smith")
@@ -365,6 +374,7 @@ public class TestAclResource extends BaseJerseyTest {
                         .param("degree_date", Long.toString(1664991975626L))
                         .param("tags", tag1Id)
                         .param("language", "eng")));
+
         Assert.assertEquals(Status.FORBIDDEN.getStatusCode(), response.getStatus());
 
         // Add an ACL READ for acltag2 with acltag1 on tag1
@@ -396,6 +406,8 @@ public class TestAclResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, acltag2Token)
                 .post(Entity.form(new Form()
                         .param("title", "My super document 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("language", "eng")
                         .param("gpascale", "3_4")
                         .param("cmucollege", "cit")
@@ -479,6 +491,8 @@ public class TestAclResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, acltag2Token)
                 .post(Entity.form(new Form()
                         .param("title", "My super document 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
                         .param("gpascale", "3_4")
                         .param("cmucollege", "cit")
                         .param("name", "John Smith")
