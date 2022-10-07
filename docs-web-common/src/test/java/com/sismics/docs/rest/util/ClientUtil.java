@@ -180,6 +180,8 @@ public class ClientUtil {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
+                        .param("current_position", "Student")
+                        .param("current_GPA", Float.toString(3.75f))
                         .param("description", "Document description")
                         .param("gpascale", "3_4")
                         .param("cmucollege", "cit")

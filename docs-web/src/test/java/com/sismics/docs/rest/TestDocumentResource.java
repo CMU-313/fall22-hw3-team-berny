@@ -72,6 +72,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
+                        .param("current_position", "Student")
+                        .param("current_GPA", Float.toString(3.75f))
                         .param("description", "My super description for document 1")
                         .param("gpascale", "3_4")
                         .param("cmucollege", "cit")
@@ -79,6 +81,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
+                        .param("current_position", "Student")
+                        .param("current_GPA", Float.toString(3.75f))
                         .param("subject", "Subject document 1")
                         .param("identifier", "Identifier document 1")
                         .param("publisher", "Publisher document 1")
@@ -107,6 +111,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
+                        .param("current_position", "Student")
+                        .param("current_GPA", Float.toString(3.75f))
                         .param("language", "eng")
                         .param("tags", tag2Id)
                         .param("relations", document1Id)), JsonObject.class);
@@ -168,6 +174,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
+                        .param("current_position", "Student")
+                        .param("current_GPA", Float.toString(3.75f))
                         .param("description", "My super description for document 3")
                         .param("gpascale", "3_4")
                         .param("cmucollege", "cit")
@@ -274,6 +282,8 @@ public class TestDocumentResource extends BaseJerseyTest {
         Assert.assertEquals("bachelor_degree", json.getString("highest_held_degree"));
         Assert.assertEquals("CMU", json.getString("previous_institute"));
         Assert.assertEquals(Long.toString(1664991975626L), json.get("degree_date").toString());
+        Assert.assertEquals("Student", json.getString("current_position"));
+        Assert.assertEquals(Float.toString(3.75f), json.getJsonNumber("current_GPA").toString());
         Assert.assertEquals("My super description for document 1", json.getString("description"));
         Assert.assertEquals("Subject document 1", json.getString("subject"));
         Assert.assertEquals("Identifier document 1", json.getString("identifier"));
@@ -333,6 +343,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
+                        .param("current_position", "Student")
+                        .param("current_GPA", Float.toString(3.75f))
                         .param("subject", "My new subject for document 1")
                         .param("identifier", "My new identifier for document 1")
                         .param("publisher", "My new publisher for document 1")
@@ -358,6 +370,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
+                        .param("current_position", "Student")
+                        .param("current_GPA", Float.toString(3.75f))
                         .param("language", "eng")), JsonObject.class);
         Assert.assertEquals(document2Id, json.getString("id"));
 
@@ -911,6 +925,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
+                        .param("current_position", "Student")
+                        .param("current_GPA", Float.toString(3.75f))
                         .param("language", "eng")
                         .param("metadata_id", metadataStrId)
                         .param("metadata_id", metadataIntId)
@@ -967,6 +983,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
+                        .param("current_position", "Student")
+                        .param("current_GPA", Float.toString(3.75f))
                         .param("metadata_id", metadataStrId)
                         .param("metadata_id", metadataIntId)
                         .param("metadata_id", metadataFloatId)
@@ -1024,6 +1042,8 @@ public class TestDocumentResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
+                        .param("current_position", "Student")
+                        .param("current_GPA", Float.toString(3.75f))
                         .param("metadata_id", metadataFloatId)
                         .param("metadata_id", metadataDateId)
                         .param("metadata_id", metadataBoolId)

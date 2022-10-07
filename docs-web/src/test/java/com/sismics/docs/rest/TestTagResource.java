@@ -102,6 +102,8 @@ public class TestTagResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
+                        .param("current_position", "Student")
+                        .param("current_GPA", Float.toString(3.75f))
                         .param("tags", tag3Id)
                         .param("language", "eng")), JsonObject.class);
         String document1Id = json.getString("id");
@@ -117,6 +119,8 @@ public class TestTagResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
+                        .param("current_position", "Student")
+                        .param("current_GPA", Float.toString(3.75f))
                         .param("tags", tag4Id)
                         .param("language", "eng")), JsonObject.class);
         String document2Id = json.getString("id");
@@ -162,6 +166,8 @@ public class TestTagResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
+                        .param("current_position", "Student")
+                        .param("current_GPA", Float.toString(3.75f))
                         .param("tags", tag3Id)
                         .param("country_of_residence", "Afghanistan")
                         .param("race", "White")
@@ -191,6 +197,8 @@ public class TestTagResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
+                        .param("current_position", "Student")
+                        .param("current_GPA", Float.toString(3.75f))
                         .param("tags", tag4Id)));
         Assert.assertEquals(Status.OK, Status.fromStatusCode(response.getStatus()));
         

@@ -173,6 +173,8 @@ public class DocumentResource extends BaseResource {
                 .add("highest_held_degree", documentDto.getHighestHeldDegree())
                 .add("degree_date", documentDto.getDegreeDate())
                 .add("previous_institute", documentDto.getPreviousInstitute())
+                .add("current_position", documentDto.getCurrentPosition())
+                .add("current_GPA", documentDto.getCurrentGPA())
                 .add("description", JsonUtil.nullable(documentDto.getDescription()))
                 .add("gpascale", documentDto.getGPAScale())
                 .add("cmucollege", documentDto.getCMUCollege())
@@ -739,6 +741,8 @@ public class DocumentResource extends BaseResource {
             @FormParam("previous_institute") String previous_institute,
             @FormParam("degree_date") String degree_date_str,
             /* ----------------------------- */
+            @FormParam("current_position") String current_position,
+            @FormParam("current_GPA") String current_GPA,
             @FormParam("subject") String subject,
             @FormParam("identifier") String identifier,
             @FormParam("publisher") String publisher,
@@ -762,7 +766,7 @@ public class DocumentResource extends BaseResource {
         language = ValidationUtil.validateLength(language, "language", 3, 7, false);
         name = ValidationUtil.validateLength(name, "name", 1, 100, false);
         previous_institute = ValidationUtil.validateLength(previous_institute, "previous_institute", 1, 100, false);
-
+        current_position =  ValidationUtil.validateLength(current_position, "current_position", 1, 100, false);
         description = ValidationUtil.validateLength(description, "description", 0, 4000, true);
         subject = ValidationUtil.validateLength(subject, "subject", 0, 500, true);
         identifier = ValidationUtil.validateLength(identifier, "identifier", 0, 500, true);
@@ -774,6 +778,7 @@ public class DocumentResource extends BaseResource {
         rights = ValidationUtil.validateLength(rights, "rights", 0, 100, true);
         Date createDate = ValidationUtil.validateDate(createDateStr, "create_date", true);
         Date degree_date = ValidationUtil.validateDate(degree_date_str, "degree_date", true);
+        Float float_GPA = Float.parseFloat(current_GPA);
         if (!Constants.SUPPORTED_LANGUAGES.contains(language)) {
             throw new ClientException("ValidationError", MessageFormat.format("{0} is not a supported language", language));
         }
@@ -812,6 +817,8 @@ public class DocumentResource extends BaseResource {
         document.setHighestHeldDegree(highest_held_degree);
         document.setDegreeDate(degree_date);
         document.setPreviousInstitute(previous_institute);
+        document.setCurrentPosition(current_position);
+        document.setCurrentGPA(float_GPA);
         document.setDescription(description);
         document.setGPAScale(gpascale);
         document.setCMUCollege(cmucollege);
@@ -908,6 +915,8 @@ public class DocumentResource extends BaseResource {
             @FormParam("degree_date") String degree_date_str,
             /* ----------------------------- */
             @FormParam("description") String description,
+            @FormParam("current_position") String current_position,
+            @FormParam("current_GPA") String current_GPA,
             @FormParam("subject") String subject,
             @FormParam("identifier") String identifier,
             @FormParam("publisher") String publisher,
@@ -933,6 +942,7 @@ public class DocumentResource extends BaseResource {
         previous_institute = ValidationUtil.validateLength(previous_institute, "previous_institute", 1, 100, false);
         language = ValidationUtil.validateLength(language, "language", 3, 7, false);
         description = ValidationUtil.validateLength(description, "description", 0, 4000, true);
+        current_position = ValidationUtil.validateLength(current_position, "current_position", 1, 100, false);
         subject = ValidationUtil.validateLength(subject, "subject", 0, 500, true);
         identifier = ValidationUtil.validateLength(identifier, "identifier", 0, 500, true);
         publisher = ValidationUtil.validateLength(publisher, "publisher", 0, 500, true);
@@ -943,6 +953,7 @@ public class DocumentResource extends BaseResource {
         rights = ValidationUtil.validateLength(rights, "rights", 0, 100, true);
         Date createDate = ValidationUtil.validateDate(createDateStr, "create_date", true);
         Date degree_date = ValidationUtil.validateDate(degree_date_str, "degree_date", true);
+        Float float_GPA = Float.parseFloat(current_GPA);
         if (language != null && !Constants.SUPPORTED_LANGUAGES.contains(language)) {
             throw new ClientException("ValidationError", MessageFormat.format("{0} is not a supported language", language));
         }
@@ -986,6 +997,8 @@ public class DocumentResource extends BaseResource {
         document.setHighestHeldDegree(highest_held_degree);
         document.setDegreeDate(degree_date);
         document.setPreviousInstitute(previous_institute);
+        document.setCurrentPosition(current_position);
+        document.setCurrentGPA(float_GPA);
         document.setDescription(description);
         document.setGPAScale(gpascale);
         document.setCMUCollege(cmucollege);
@@ -1099,6 +1112,8 @@ public class DocumentResource extends BaseResource {
         document.setHighestHeldDegree("associate_degree");
         document.setDegreeDate(new Date());
         document.setPreviousInstitute("CMU");
+        document.setCurrentPosition("Student");
+        document.setCurrentGPA(3.75f);
         document.setSubject(StringUtils.abbreviate(mailContent.getSubject(), 500));
         document.setFormat("EML");
         document.setSource("Email");

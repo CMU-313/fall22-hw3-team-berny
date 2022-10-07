@@ -70,6 +70,8 @@ public class TestRouteResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
+                        .param("current_position", "Student")
+                        .param("current_GPA", Float.toString(3.75f))
                         .param("language", "eng")), JsonObject.class);
         String document1Id = json.getString("id");
 
@@ -409,6 +411,8 @@ public class TestRouteResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
+                        .param("current_position", "Student")
+                        .param("current_GPA", Float.toString(3.75f))
                         .param("description", "My super description for document 1")
                         .param("gpascale", "3_4")
                         .param("cmucollege", "cit")
@@ -477,6 +481,8 @@ public class TestRouteResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
+                        .param("current_position", "Student")
+                        .param("current_GPA", Float.toString(3.75f))
                         .param("tags", tagPendingId)
                         .param("language", "eng")), JsonObject.class);
         String document2Id = json.getString("id");
