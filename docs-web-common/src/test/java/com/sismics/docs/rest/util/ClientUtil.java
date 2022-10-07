@@ -174,8 +174,6 @@ public class ClientUtil {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, token)
                 .put(Entity.form(new Form()
                         .param("title", "Document Title")
-                        .param("country_of_residence", "Afghanistan")
-                        .param("race", "White")
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")

@@ -50,8 +50,6 @@ public class TestWebhookResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, webhook1Token)
                 .put(Entity.form(new Form()
                         .param("title", "Webhook document 1")
-                        .param("country_of_residence", "Afghanistan")
-                        .param("race", "White")
                         .param("gpascale", "3_4")
                         .param("cmucollege", "cit")
                         .param("name", "John Smith")

@@ -48,18 +48,6 @@ public class Document implements Loggable {
     private String title;
     
     /**
-
-     * Country of Residence
-     */
-    @Column(name = "DOC_COUNTRY_OF_RESIDENCE_C",length = 100)
-    private String country_of_residence;
-
-    /**
-     * Race
-     */
-    @Column(name = "DOC_RACE_C",length = 100)
-    private String race;
-    /**
      * Name.
      */
     @Column(name = "DOC_NAME_C", nullable = false, length = 100)
@@ -207,7 +195,7 @@ public class Document implements Loggable {
     public void setTitle(String title) {
         this.title = title;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -240,6 +228,7 @@ public class Document implements Loggable {
         this.degree_date = degree_date;
     }
 
+
     public String getDescription() {
         return description;
     }
@@ -264,21 +253,6 @@ public class Document implements Loggable {
         this.cmucollege = cmucollege;
     }
 
-    public String getCountryOfResidence(){
-        return country_of_residence;
-    }
-
-    public void setCountryOfResidence(String country_of_residence){
-        this.country_of_residence = country_of_residence;
-    }
-
-    public String getRace(){
-        return race;
-    }
-
-    public void setRace(String race){
-        this.race = race;
-    }
     public String getSubject() {
         return subject;
     }

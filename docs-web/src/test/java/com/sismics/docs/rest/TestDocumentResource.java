@@ -66,8 +66,6 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, document1Token)
                 .put(Entity.form(new Form()
                         .param("title", "My super title document 1")
-                        .param("country_of_residence", "Afghanistan")
-                        .param("race", "White")
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
@@ -99,8 +97,6 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, document1Token)
                 .put(Entity.form(new Form()
                         .param("title", "My super title document 2")
-                        .param("country_of_residence", "Afghanistan")
-                        .param("race", "White")
                         .param("gpascale", "3_4")
                         .param("cmucollege", "cit")
                         .param("name", "John Smith")
@@ -162,8 +158,6 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, document3Token)
                 .put(Entity.form(new Form()
                         .param("title", "My_super_title_document_3")
-                        .param("country_of_residence", "Afghanistan")
-                        .param("race", "White")
                         .param("name", "John Smith")
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
@@ -266,8 +260,6 @@ public class TestDocumentResource extends BaseJerseyTest {
         Assert.assertEquals(1, json.getInt("file_count"));
         Assert.assertTrue(json.getBoolean("shared"));
         Assert.assertEquals("My super title document 1", json.getString("title"));
-        Assert.assertEquals("Afghanistan", json.getString("country_of_residence"));
-        Assert.assertEquals("White", json.getString("race"));
         Assert.assertEquals("3_4", json.getString("gpascale"));
         Assert.assertEquals("cit", json.getString("cmucollege"));
         Assert.assertEquals("John Smith", json.getString("name"));
@@ -325,8 +317,6 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .post(Entity.form(new Form()
                         .param("title", "My new super document 1")
                         .param("description", "My new super description for document\r\n\u00A0\u0009 1")
-                        .param("country_of_residence", "Afghanistan")
-                        .param("race", "White")
                         .param("gpascale", "3_4")
                         .param("cmucollege", "cit")
                         .param("name", "John Smith")
@@ -350,8 +340,6 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, document1Token)
                 .post(Entity.form(new Form()
                         .param("title", "My super title document 2")
-                        .param("country_of_residence", "Afghanistan")
-                        .param("race", "White")
                         .param("gpascale", "3_4")
                         .param("cmucollege", "cit")
                         .param("name", "John Smith")
@@ -903,8 +891,6 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, metadata1Token)
                 .put(Entity.form(new Form()
                         .param("title", "Metadata 1")
-                        .param("country_of_residence", "Afghanistan")
-                        .param("race", "White")
                         .param("gpascale", "3_4")
                         .param("cmucollege", "cit")
                         .param("name", "John Smith")
@@ -959,8 +945,6 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .post(Entity.form(new Form()
                         .param("title", "Metadata 1")
                         .param("language", "eng")
-                        .param("country_of_residence", "Afghanistan")
-                        .param("race", "White")
                         .param("gpascale", "3_4")
                         .param("cmucollege", "cit")
                         .param("name", "John Smith")
@@ -1016,8 +1000,6 @@ public class TestDocumentResource extends BaseJerseyTest {
                 .post(Entity.form(new Form()
                         .param("title", "Metadata 1")
                         .param("language", "eng")
-                        .param("country_of_residence", "Afghanistan")
-                        .param("race", "White")
                         .param("gpascale", "3_4")
                         .param("cmucollege", "cit")
                         .param("name", "John Smith")

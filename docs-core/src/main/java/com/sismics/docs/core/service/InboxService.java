@@ -224,8 +224,6 @@ public class InboxService extends AbstractScheduledService {
 
         document.setUserId("admin");
         document.setTitle(StringUtils.abbreviate(subject, 100));
-        document.setCountryOfResidence("Afghanistan");
-        document.setRace("White");
         document.setName("Mail");
         document.setHighestHeldDegree("associate_degree");
         document.setDegreeDate(new Date());
