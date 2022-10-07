@@ -7,6 +7,47 @@ angular.module('docs').controller('DocumentView', function ($scope, $rootScope, 
   // Load document data from server
   Restangular.one('document', $stateParams.id).get().then(function (data) {
     $scope.document = data;
+
+    if ($scope.document.gpascale == "4_5" ){
+      $scope.document.gpascale = "4.0 - 5.0";
+    }else if($scope.document.gpascale == "3_4" ){
+      $scope.document.gpascale = "3.0 - 4.0";
+    }else if($scope.document.gpascale == "2_3" ){
+      $scope.document.gpascale = "2.0 - 3.0";
+    }else if($scope.document.gpascale == "1_2" ){
+      $scope.document.gpascale = "1.0 - 2.0";
+    }else {
+      $scope.document.gpascale = "0.0 - 1.0";
+    }
+
+    if ($scope.document.cmucollege == "cit" ){
+      $scope.document.cmucollege = "College of Engineering";
+    }else if($scope.document.cmucollege == "cfa" ){
+      $scope.document.cmucollege = "College of Fine Arts";
+    }else if($scope.document.cmucollege == "dc" ){
+      $scope.document.cmucollege = "Dietrich College of Humanities and Social Sciences";
+    }else if($scope.document.cmucollege == "heinz" ){
+      $scope.document.cmucollege = "Heinz College of Information Systems and Public Policy";
+    }else if($scope.document.cmucollege == "mcs" ){
+      $scope.document.cmucollege = "Mellon College of Science";
+    }else if($scope.document.cmucollege == "scs" ){
+      $scope.document.cmucollege = "School of Computer Science";
+    }else {
+      $scope.document.cmucollege = "Tepper School of Business";
+    }
+
+    
+    $scope.document.degree_date = new Date($scope.document.degree_date).toDateString();
+    if ($scope.document.highest_held_degree == "associate_degree" ){
+      $scope.document.highest_held_degree = "Associate's Degree";
+    }else if($scope.document.highest_held_degree == "bachelor_degree" ){
+      $scope.document.highest_held_degree = "Bachelor's Degree";
+    }else if($scope.document.highest_held_degree == "master_degree" ){
+      $scope.document.highest_held_degree = "Master's Degree";
+    }else {
+      $scope.document.highest_held_degree = "Doctoral Degree";
+    }
+    
   }, function (response) {
     $scope.error = response;
   });

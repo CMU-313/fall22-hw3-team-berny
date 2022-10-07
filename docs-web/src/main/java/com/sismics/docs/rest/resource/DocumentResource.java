@@ -1,5 +1,4 @@
 package com.sismics.docs.rest.resource;
-
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
@@ -59,7 +58,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.text.MessageFormat;
 import java.util.*;
-
+import java.text.SimpleDateFormat;  
 /**
  * Document REST resources.
  * 
@@ -81,7 +80,7 @@ public class DocumentResource extends BaseResource {
             MONTH_PARSER,
             DAY_PARSER};
     private static final DateTimeFormatter DATE_FORMATTER = new DateTimeFormatterBuilder().append( null, DATE_PARSERS).toFormatter();
-
+    
     /**
      * Returns a document.
      *
@@ -168,7 +167,17 @@ public class DocumentResource extends BaseResource {
         JsonObjectBuilder document = Json.createObjectBuilder()
                 .add("id", documentDto.getId())
                 .add("title", documentDto.getTitle())
+                .add("country_of_residence", JsonUtil.nullable(documentDto.getCountryOfResidence()))
+                .add("race", JsonUtil.nullable(documentDto.getRace()))
+                .add("name", documentDto.getName())
+                .add("highest_held_degree", documentDto.getHighestHeldDegree())
+                .add("degree_date", documentDto.getDegreeDate())
+                .add("previous_institute", documentDto.getPreviousInstitute())
+                .add("current_position", documentDto.getCurrentPosition())
+                .add("current_GPA", documentDto.getCurrentGPA())
                 .add("description", JsonUtil.nullable(documentDto.getDescription()))
+                .add("gpascale", documentDto.getGPAScale())
+                .add("cmucollege", documentDto.getCMUCollege())
                 .add("create_date", documentDto.getCreateTimestamp())
                 .add("update_date", documentDto.getUpdateTimestamp())
                 .add("language", documentDto.getLanguage())
@@ -720,7 +729,20 @@ public class DocumentResource extends BaseResource {
     @PUT
     public Response add(
             @FormParam("title") String title,
+            @FormParam("country_of_residence") String country_of_residence,
+            @FormParam("race") String race,
             @FormParam("description") String description,
+            /* new attributes added by Emilie */
+            @FormParam("gpascale") String gpascale,
+            @FormParam("cmucollege") String cmucollege,
+            /* new attribues added by Rui */
+            @FormParam("name") String name,
+            @FormParam("highest_held_degree") String highest_held_degree,
+            @FormParam("previous_institute") String previous_institute,
+            @FormParam("degree_date") String degree_date_str,
+            /* ----------------------------- */
+            @FormParam("current_position") String current_position,
+            @FormParam("current_GPA") String current_GPA,
             @FormParam("subject") String subject,
             @FormParam("identifier") String identifier,
             @FormParam("publisher") String publisher,
@@ -742,6 +764,9 @@ public class DocumentResource extends BaseResource {
         // Validate input data
         title = ValidationUtil.validateLength(title, "title", 1, 100, false);
         language = ValidationUtil.validateLength(language, "language", 3, 7, false);
+        name = ValidationUtil.validateLength(name, "name", 1, 100, false);
+        previous_institute = ValidationUtil.validateLength(previous_institute, "previous_institute", 1, 100, false);
+        current_position =  ValidationUtil.validateLength(current_position, "current_position", 1, 100, false);
         description = ValidationUtil.validateLength(description, "description", 0, 4000, true);
         subject = ValidationUtil.validateLength(subject, "subject", 0, 500, true);
         identifier = ValidationUtil.validateLength(identifier, "identifier", 0, 500, true);
@@ -752,15 +777,51 @@ public class DocumentResource extends BaseResource {
         coverage = ValidationUtil.validateLength(coverage, "coverage", 0, 100, true);
         rights = ValidationUtil.validateLength(rights, "rights", 0, 100, true);
         Date createDate = ValidationUtil.validateDate(createDateStr, "create_date", true);
+        Date degree_date = ValidationUtil.validateDate(degree_date_str, "degree_date", true);
+        Float float_GPA = Float.parseFloat(current_GPA);
         if (!Constants.SUPPORTED_LANGUAGES.contains(language)) {
             throw new ClientException("ValidationError", MessageFormat.format("{0} is not a supported language", language));
+        }
+
+        /* validating if country input is valid */
+        if (country_of_residence != null && !Constants.COUNTRIES.contains(country_of_residence)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid country", country_of_residence));
+        }
+        /*validating if race input is valid */
+        if (race != null && !Constants.RACES.contains(race)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid race", race));
+        }
+
+        /* validating if degree input is valid */
+        if (highest_held_degree != null && !Constants.DEGREES.contains(highest_held_degree)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid degree", highest_held_degree));
+        }
+        
+
+        // validating if gpa scale is valid
+        if (gpascale != null && !Constants.GPASCALE.contains(gpascale)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid GPA scale", gpascale));
+        }
+        // validating if cmu college applying to is valid
+        if (cmucollege != null && !Constants.CMUCOLLEGE.contains(cmucollege)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid CMU college to apply to", cmucollege));
         }
 
         // Create the document
         Document document = new Document();
         document.setUserId(principal.getId());
         document.setTitle(title);
+        document.setCountryOfResidence(country_of_residence);
+        document.setRace(race);
+        document.setName(name);
+        document.setHighestHeldDegree(highest_held_degree);
+        document.setDegreeDate(degree_date);
+        document.setPreviousInstitute(previous_institute);
+        document.setCurrentPosition(current_position);
+        document.setCurrentGPA(float_GPA);
         document.setDescription(description);
+        document.setGPAScale(gpascale);
+        document.setCMUCollege(cmucollege);
         document.setSubject(subject);
         document.setIdentifier(identifier);
         document.setPublisher(publisher);
@@ -842,7 +903,20 @@ public class DocumentResource extends BaseResource {
     public Response update(
             @PathParam("id") String id,
             @FormParam("title") String title,
+            @FormParam("country_of_residence") String country_of_residence,
+            @FormParam("race") String race,
+            /* new attribues added by Emilie */
+            @FormParam("gpascale") String gpascale,
+            @FormParam("cmucollege") String cmucollege,
+            /* new attribues added by Rui */
+            @FormParam("name") String name,
+            @FormParam("highest_held_degree") String highest_held_degree,
+            @FormParam("previous_institute") String previous_institute,
+            @FormParam("degree_date") String degree_date_str,
+            /* ----------------------------- */
             @FormParam("description") String description,
+            @FormParam("current_position") String current_position,
+            @FormParam("current_GPA") String current_GPA,
             @FormParam("subject") String subject,
             @FormParam("identifier") String identifier,
             @FormParam("publisher") String publisher,
@@ -863,8 +937,12 @@ public class DocumentResource extends BaseResource {
         
         // Validate input data
         title = ValidationUtil.validateLength(title, "title", 1, 100, false);
+        
+        name = ValidationUtil.validateLength(name, "name", 1, 100, false);
+        previous_institute = ValidationUtil.validateLength(previous_institute, "previous_institute", 1, 100, false);
         language = ValidationUtil.validateLength(language, "language", 3, 7, false);
         description = ValidationUtil.validateLength(description, "description", 0, 4000, true);
+        current_position = ValidationUtil.validateLength(current_position, "current_position", 1, 100, false);
         subject = ValidationUtil.validateLength(subject, "subject", 0, 500, true);
         identifier = ValidationUtil.validateLength(identifier, "identifier", 0, 500, true);
         publisher = ValidationUtil.validateLength(publisher, "publisher", 0, 500, true);
@@ -874,10 +952,30 @@ public class DocumentResource extends BaseResource {
         coverage = ValidationUtil.validateLength(coverage, "coverage", 0, 100, true);
         rights = ValidationUtil.validateLength(rights, "rights", 0, 100, true);
         Date createDate = ValidationUtil.validateDate(createDateStr, "create_date", true);
+        Date degree_date = ValidationUtil.validateDate(degree_date_str, "degree_date", true);
+        Float float_GPA = Float.parseFloat(current_GPA);
         if (language != null && !Constants.SUPPORTED_LANGUAGES.contains(language)) {
             throw new ClientException("ValidationError", MessageFormat.format("{0} is not a supported language", language));
         }
+
+        if (country_of_residence != null && !Constants.COUNTRIES.contains(country_of_residence)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid country", country_of_residence));
+        }
+        if (race != null && !Constants.RACES.contains(race)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid race", race));
+        }
         
+
+        /* validating if gpascale input is valid */
+        if (gpascale != null && !Constants.GPASCALE.contains(gpascale)) { 
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid GPA scale", gpascale));
+        }
+
+        /* validating if college applying to input is valid */
+        if (cmucollege != null && !Constants.CMUCOLLEGE.contains(cmucollege)) {
+            throw new ClientException("ValidationError", MessageFormat.format("{0} is not a valid CMU college to apply to", cmucollege));
+        }
+
         // Check write permission
         AclDao aclDao = new AclDao();
         if (!aclDao.checkPermission(id, PermType.WRITE, getTargetIdList(null))) {
@@ -893,7 +991,17 @@ public class DocumentResource extends BaseResource {
         
         // Update the document
         document.setTitle(title);
+        document.setCountryOfResidence(country_of_residence);
+        document.setRace(race);
+        document.setName(name);
+        document.setHighestHeldDegree(highest_held_degree);
+        document.setDegreeDate(degree_date);
+        document.setPreviousInstitute(previous_institute);
+        document.setCurrentPosition(current_position);
+        document.setCurrentGPA(float_GPA);
         document.setDescription(description);
+        document.setGPAScale(gpascale);
+        document.setCMUCollege(cmucollege);
         document.setSubject(subject);
         document.setIdentifier(identifier);
         document.setPublisher(publisher);
@@ -996,6 +1104,16 @@ public class DocumentResource extends BaseResource {
             document.setTitle(StringUtils.abbreviate(mailContent.getSubject(), 100));
         }
         document.setDescription(StringUtils.abbreviate(mailContent.getMessage(), 4000));
+        document.setCountryOfResidence("Afghanistan");
+        document.setRace("White");
+        document.setGPAScale("3.0_4.0");
+        document.setCMUCollege("cit");
+        document.setName("Mail");
+        document.setHighestHeldDegree("associate_degree");
+        document.setDegreeDate(new Date());
+        document.setPreviousInstitute("CMU");
+        document.setCurrentPosition("Student");
+        document.setCurrentGPA(3.75f);
         document.setSubject(StringUtils.abbreviate(mailContent.getSubject(), 500));
         document.setFormat("EML");
         document.setSource("Email");

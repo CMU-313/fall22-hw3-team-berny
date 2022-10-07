@@ -1,9 +1,9 @@
 package com.sismics.docs.rest;
-
+import java.util.*;
 import com.sismics.util.filter.TokenBasedSecurityFilter;
 import org.junit.Assert;
 import org.junit.Test;
-
+import java.util.*;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.ws.rs.client.Entity;
@@ -42,7 +42,17 @@ public class TestAuditLogResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, auditlog1Token)
                 .put(Entity.form(new Form()
                         .param("title", "My super title document 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(1664991975626L))
+                        .param("current_position", "Student")
+                        .param("current_GPA", Float.toString(3.75f))
                         .param("description", "My super description for document 1")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("tags", tag1Id)
                         .param("language", "eng")
                         .param("create_date", Long.toString(create1Date))), JsonObject.class);

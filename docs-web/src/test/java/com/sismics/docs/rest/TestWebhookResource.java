@@ -1,5 +1,5 @@
 package com.sismics.docs.rest;
-
+import java.util.*;
 import com.sismics.docs.rest.resource.ThirdPartyWebhookResource;
 import com.sismics.util.filter.TokenBasedSecurityFilter;
 import org.junit.Assert;
@@ -50,8 +50,18 @@ public class TestWebhookResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, webhook1Token)
                 .put(Entity.form(new Form()
                         .param("title", "Webhook document 1")
+                        .param("country_of_residence", "Afghanistan")
+                        .param("race", "White")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(1664991975626L))
+                        .param("current_position", "Student")
+                        .param("current_GPA", Float.toString(3.75f))
                         .param("language", "eng")
-                        .param("create_date", Long.toString(new Date().getTime()))), JsonObject.class);
+                        .param("create_date", Long.toString(1664991975626L))), JsonObject.class);
         String document1Id = json.getString("id");
 
         // Check the webhook payload

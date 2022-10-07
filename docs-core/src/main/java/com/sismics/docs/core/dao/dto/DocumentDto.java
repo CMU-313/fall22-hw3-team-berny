@@ -1,4 +1,5 @@
 package com.sismics.docs.core.dao.dto;
+import java.util.Date;  
 
 /**
  * Document DTO.
@@ -20,11 +21,63 @@ public class DocumentDto {
      * Title.
      */
     private String title;
+
+    /**
+
+     * Country of Residence
+     */
+    private String country_of_residence;
+
+    /**
+     * Race
+     */
+    private String race;
+
+    /**
+     * Name.
+     */
+    private String name;
+
+    /**
+     * highest held degree.
+     */
+    private String highest_held_degree;
+
+    /**
+     * previously attended institute
+     */
+    private String previous_institute;
+
+    /**
+     * Date of degree acquisition.
+     */
+    private Long degree_date;
+
     
+    /**
+     * current position.
+     */
+    private String current_position;
+
+    /**
+     * current GPA.
+     */
+    private Float current_GPA;
+
     /**
      * Description.
      */
     private String description;
+
+    /**
+     * GPA Scale.
+     */
+    private String gpascale;
+
+    /**
+     * CMU College.
+     */
+    private String cmucollege;
     
     /**
      * Subject.
@@ -136,6 +189,69 @@ public class DocumentDto {
         this.title = title;
     }
 
+    public String getCountryOfResidence(){
+        return country_of_residence;
+    }
+
+    public void setCountryOfResidence(String country_of_residence){
+        this.country_of_residence = country_of_residence;
+    }
+
+    public String getRace(){
+        return race;
+    }
+
+    public void setRace(String race){
+        this.race = race;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getHighestHeldDegree() {
+        return highest_held_degree;
+    }
+
+    public void setHighestHeldDegree(String highest_held_degree) {
+        this.highest_held_degree = highest_held_degree;
+    }
+
+    public String getPreviousInstitute() {
+        return previous_institute;
+    }
+
+    public void setPreviousInstitute(String previous_institute) {
+        this.previous_institute = previous_institute;
+    }
+
+    public Long getDegreeDate() {
+        return degree_date;
+    }
+
+    public void setDegreeDate(Long degree_date) {
+        this.degree_date = degree_date;
+    }
+
+    public String getCurrentPosition() {
+        return current_position;
+    }
+
+    public void setCurrentPosition(String current_position) {
+        this.current_position = current_position;
+    }
+
+    public Float getCurrentGPA() {
+        return current_GPA;
+    }
+
+    public void setCurrentGPA(Float current_GPA) {
+        this.current_GPA = current_GPA;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -144,6 +260,22 @@ public class DocumentDto {
         this.description = description;
     }
 
+    public String getGPAScale() {
+        return gpascale;
+    }
+
+    public void setGPAScale(String gpascale) {
+        this.gpascale = gpascale;
+    }
+
+    public String getCMUCollege() {
+        return cmucollege;
+    }
+
+    public void setCMUCollege(String cmucollege) {
+        this.cmucollege = cmucollege;
+    }
+   
     public String getSubject() {
         return subject;
     }
