@@ -59,7 +59,7 @@ public class Document implements Loggable {
      */
     @Column(name = "DOC_RACE_C",length = 100)
     private String race;
-
+    /**
      * Name.
      */
     @Column(name = "DOC_NAME_C", nullable = false, length = 100)
