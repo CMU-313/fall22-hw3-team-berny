@@ -43,6 +43,16 @@ public class DocumentDto {
     private Long degree_date;
     
     /**
+     * current position.
+     */
+    private String current_position;
+
+    /**
+     * current GPA.
+     */
+    private Float current_GPA;
+
+    /**
      * Description.
      */
     private String description;
@@ -189,6 +199,21 @@ public class DocumentDto {
         this.degree_date = degree_date;
     }
 
+    public String getCurrentPosition() {
+        return current_position;
+    }
+
+    public void setCurrentPosition(String current_position) {
+        this.current_position = current_position;
+    }
+
+    public Float getCurrentGPA() {
+        return current_GPA;
+    }
+
+    public void setCurrentGPA(Float current_GPA) {
+        this.current_GPA = current_GPA;
+    }
 
     public String getDescription() {
         return description;

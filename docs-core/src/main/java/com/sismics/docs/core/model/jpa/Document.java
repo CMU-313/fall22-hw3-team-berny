@@ -74,6 +74,15 @@ public class Document implements Loggable {
     /**
      * Description.
      */
+    @Column(name = "DOC_CURRENT_POSITION_C", length = 100)
+    private String current_position;
+
+    @Column(name = "DOC_CURRENT_GPA_C")
+    private Float current_GPA;
+
+    /**
+     * Description.
+     */
     @Column(name = "DOC_DESCRIPTION_C", length = 4000)
     private String description;
     
@@ -217,6 +226,22 @@ public class Document implements Loggable {
     }
 
 
+    public String getCurrentPosition() {
+        return current_position;
+    }
+
+    public void setCurrentPosition(String current_position) {
+        this.current_position = current_position;
+    }
+
+    public Float getCurrentGPA() {
+        return current_GPA;
+    }
+
+    public void setCurrentGPA(Float current_GPA) {
+        this.current_GPA = current_GPA;
+    }
+    
     public String getDescription() {
         return description;
     }

@@ -12,6 +12,10 @@
   <dd ng-if="document.previous_institute">{{ document.previous_institute }}</dd>
   <dt ng-if="document.subject">{{ 'document.subject' | translate }}</dt>
   <dd ng-if="document.subject">{{ document.subject }}</dd>
+  <dt ng-if="document.current_position">Current Position</dt>
+  <dd ng-if="document.current_position">{{ document.current_position }}</dd>
+  <dt ng-if="document.current_GPA">Current GPA</dt>
+  <dd ng-if="document.current_GPA">{{ document.current_GPA.toFixed(2) }}</dd>
   <dt ng-if="document.identifier">{{ 'document.identifier' | translate }}</dt>
   <dd ng-if="document.identifier">{{ document.identifier }}</dd>
   <dt ng-if="document.publisher">{{ 'document.publisher' | translate }}</dt>

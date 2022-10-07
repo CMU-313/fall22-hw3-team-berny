@@ -56,6 +56,8 @@ public class TestWebhookResource extends BaseJerseyTest {
                         .param("highest_held_degree", "bachelor_degree")
                         .param("previous_institute", "CMU")
                         .param("degree_date", Long.toString(1664991975626L))
+                        .param("current_position", "Student")
+                        .param("current_GPA", Float.toString(3.75f))
                         .param("language", "eng")
                         .param("create_date", Long.toString(1664991975626L))), JsonObject.class);
         String document1Id = json.getString("id");
