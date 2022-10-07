@@ -194,7 +194,6 @@ public class DocumentDto {
     public void setRace(String race){
         this.race = race;
     }
-
     public String getName() {
         return name;
     }
@@ -250,7 +249,7 @@ public class DocumentDto {
     public void setCMUCollege(String cmucollege) {
         this.cmucollege = cmucollege;
     }
-
+   
     public String getSubject() {
         return subject;
     }

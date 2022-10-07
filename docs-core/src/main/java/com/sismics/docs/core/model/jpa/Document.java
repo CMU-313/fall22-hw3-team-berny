@@ -207,6 +207,17 @@ public class Document implements Loggable {
     public void setTitle(String title) {
         this.title = title;
     }
+    public void setCountryOfResidence(String country_of_residence){
+        this.country_of_residence = country_of_residence;
+    }
+
+    public String getRace(){
+        return race;
+    }
+
+    public void setRace(String race){
+        this.race = race;
+    }
     
     public String getName() {
         return name;
@@ -268,17 +279,6 @@ public class Document implements Loggable {
         return country_of_residence;
     }
 
-    public void setCountryOfResidence(String country_of_residence){
-        this.country_of_residence = country_of_residence;
-    }
-
-    public String getRace(){
-        return race;
-    }
-
-    public void setRace(String race){
-        this.race = race;
-    }
     public String getSubject() {
         return subject;
     }
