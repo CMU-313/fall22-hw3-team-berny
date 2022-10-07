@@ -1,6 +1,7 @@
 ## Documentation
 
-Documentation on our team's new features and user testing can be found in the "User Testing Documentation.pdf" file located in the Fall22-HW3-Team-Berny folder. 
+
+Documentation on our team's new features and user testing can be found in the UserDocumentation file located in the Fall22-HW3-Team-Berny folder. 
 
 ![Open in Codespaces](https://classroom.github.com/assets/open-in-codespaces-abfff4d4e15f9e1bd8274d9a39a0befe03a0632bb0f153d0ec72ff541cedbe34.svg)
 <h3 align="center">
