@@ -236,8 +236,6 @@ public class DocumentDto {
         this.degree_date = degree_date;
     }
 
-<<<<<<< HEAD
-=======
     public String getCurrentPosition() {
         return current_position;
     }
@@ -254,7 +252,6 @@ public class DocumentDto {
         this.current_GPA = current_GPA;
     }
 
->>>>>>> bchen-add-attributes
     public String getDescription() {
         return description;
     }
