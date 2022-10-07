@@ -131,4 +131,4 @@ information or see <http://opensource.org/licenses/GPL-2.0>.
 
 ## Documentation
 
-Documentation on our team's new features and user testing can be found in the UserDocumentation.pdf file located in the Fall22-HW3-Team-Berny folder. 
+Documentation on our team's new features and user testing can be found in the "User Testing Documentation.pdf" file located in the Fall22-HW3-Team-Berny folder. 
