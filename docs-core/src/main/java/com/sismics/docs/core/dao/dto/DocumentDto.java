@@ -1,4 +1,5 @@
 package com.sismics.docs.core.dao.dto;
+import java.util.Date;  
 
 /**
  * Document DTO.
@@ -22,6 +23,7 @@ public class DocumentDto {
     private String title;
 
     /**
+
      * Country of Residence
      */
     private String country_of_residence;
@@ -31,11 +33,41 @@ public class DocumentDto {
      */
     private String race;
 
+
+     * Name.
+     */
+    private String name;
+
+    /**
+     * highest held degree.
+     */
+    private String highest_held_degree;
+
+    /**
+     * previously attended institute
+     */
+    private String previous_institute;
+
+    /**
+     * Date of degree acquisition.
+     */
+    private Long degree_date;
+
     
     /**
      * Description.
      */
     private String description;
+
+    /**
+     * GPA Scale.
+     */
+    private String gpascale;
+
+    /**
+     * CMU College.
+     */
+    private String cmucollege;
     
     /**
      * Subject.
@@ -162,12 +194,61 @@ public class DocumentDto {
     public void setRace(String race){
         this.race = race;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getHighestHeldDegree() {
+        return highest_held_degree;
+    }
+
+    public void setHighestHeldDegree(String highest_held_degree) {
+        this.highest_held_degree = highest_held_degree;
+    }
+
+    public String getPreviousInstitute() {
+        return previous_institute;
+    }
+
+    public void setPreviousInstitute(String previous_institute) {
+        this.previous_institute = previous_institute;
+    }
+
+    public Long getDegreeDate() {
+        return degree_date;
+    }
+
+    public void setDegreeDate(Long degree_date) {
+        this.degree_date = degree_date;
+    }
+
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getGPAScale() {
+        return gpascale;
+    }
+
+    public void setGPAScale(String gpascale) {
+        this.gpascale = gpascale;
+    }
+
+    public String getCMUCollege() {
+        return cmucollege;
+    }
+
+    public void setCMUCollege(String cmucollege) {
+        this.cmucollege = cmucollege;
     }
 
     public String getSubject() {

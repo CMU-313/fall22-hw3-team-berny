@@ -548,6 +548,24 @@ angular.module('docs',
     { key: 'vie', label: 'Tiếng Việt' },
     { key: 'ces', label: 'Czech' }
   ];
+
+  $rootScope.acceptedGPAScale = [
+    { key: '4_5', label: '4.0 - 5.0' },
+    { key: '3_4', label: '3.0 - 4.0' },
+    { key: '2_3', label: '2.0 - 3.0' },
+    { key: '1_2', label: '1.0 - 2.0' },
+    { key: '0_1', label: '0.0 - 1.0' }
+  ];
+
+  $rootScope.acceptedCMUCollege = [
+    { key: 'cit', label: 'College of Engineering' },
+    { key: 'cfa', label: 'College of Fine Arts' },
+    { key: 'dc', label: 'Dietrich College of Humanities and Social Sciences' },
+    { key: 'heinz', label: 'Heinz College of Information Systems and Public Policy' },
+    { key: 'mcs', label: 'Mellon College of Science' },
+    { key: 'scs', label: 'School of Computer Science' },
+    { key: 'tp', label: 'Tepper School of Business' },
+  ];
 })
 /**
  * Initialize ngProgress.

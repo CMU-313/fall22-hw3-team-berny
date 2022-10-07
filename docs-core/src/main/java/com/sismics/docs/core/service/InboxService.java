@@ -226,7 +226,13 @@ public class InboxService extends AbstractScheduledService {
         document.setTitle(StringUtils.abbreviate(subject, 100));
         document.setCountryOfResidence("Afghanistan");
         document.setRace("White");
+        document.setName("Mail");
+        document.setHighestHeldDegree("associate_degree");
+        document.setDegreeDate(new Date());
+        document.setPreviousInstitute("CMU");
         document.setDescription(StringUtils.abbreviate(mailContent.getMessage(), 4000));
+        document.setGPAScale("3.0_4.0");
+        document.setCMUCollege("cit");
         document.setSubject(StringUtils.abbreviate(mailContent.getSubject(), 500));
         document.setFormat("EML");
         document.setSource("Inbox");

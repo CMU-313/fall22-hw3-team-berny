@@ -1,5 +1,19 @@
 <p class="well-sm" ng-bind-html="document.description"></p>
 <dl class="dl-horizontal">
+  <dt ng-if="document.gpascale">GPA Scale</dt>
+  <dd ng-if="document.gpascale">{{ document.gpascale }}</dd>
+  <dt ng-if="document.cmucollege">CMU College</dt>
+  <dd ng-if="document.cmucollege">{{ document.cmucollege }}</dd>
+  <dt ng-if="document.subject">{{ 'document.subject' | translate }}</dt>
+  <dd ng-if="document.subject">{{ document.subject }}</dd>
+  <dt ng-if="document.name">Name</dt>
+  <dd ng-if="document.name">{{ document.name }}</dd>
+  <dt ng-if="document.highest_held_degree">Highest Held Degree</dt>
+  <dd ng-if="document.highest_held_degree">{{ document.highest_held_degree }}</dd>
+  <dt ng-if="document.degree_date">Date of Degree</dt>
+  <dd ng-if="document.degree_date">{{ document.degree_date }}</dd>
+  <dt ng-if="document.previous_institute">Previous Institute</dt>
+  <dd ng-if="document.previous_institute">{{ document.previous_institute }}</dd>
   <dt ng-if="document.subject">{{ 'document.subject' | translate }}</dt>
   <dd ng-if="document.subject">{{ document.subject }}</dd>
   <dt ng-if="document.country_of_residence">Country Of Residence</dt>

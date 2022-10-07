@@ -48,6 +48,7 @@ public class Document implements Loggable {
     private String title;
     
     /**
+
      * Country of Residence
      */
     @Column(name = "DOC_COUNTRY_OF_RESIDENCE_C",length = 100)
@@ -59,11 +60,46 @@ public class Document implements Loggable {
     @Column(name = "DOC_RACE_C",length = 100)
     private String race;
 
+     * Name.
+     */
+    @Column(name = "DOC_NAME_C", nullable = false, length = 100)
+    private String name;
+
+    /**
+     * highest held degree.
+     */
+    @Column(name = "DOC_HIGHEST_HELD_DEGREE_C", length = 100)
+    private String highest_held_degree;
+
+    /**
+     * previously attended institute
+     */
+    @Column(name = "DOC_PREVIOUS_INSTITUTE_C", length = 100)
+    private String previous_institute;
+
+    /**
+     * Date of degree acquisition.
+     */
+    @Column(name = "DOC_DEGREE_DATE_D")
+    private Date degree_date;
+
     /**
      * Description.
      */
     @Column(name = "DOC_DESCRIPTION_C", length = 4000)
     private String description;
+
+    /**
+     * GPA Scale.
+     */
+    @Column(name = "DOC_GPASCALE_C", length = 100)
+    private String gpascale;
+
+    /**
+     * Description.
+     */
+    @Column(name = "DOC_CMUCOLLEGE_C", length = 100)
+    private String cmucollege;
     
     /**
      * Subject.
@@ -171,6 +207,62 @@ public class Document implements Loggable {
     public void setTitle(String title) {
         this.title = title;
     }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getHighestHeldDegree() {
+        return highest_held_degree;
+    }
+
+    public void setHighestHeldDegree(String highest_held_degree) {
+        this.highest_held_degree = highest_held_degree;
+    }
+
+    public String getPreviousInstitute() {
+        return previous_institute;
+    }
+
+    public void setPreviousInstitute(String previous_institute) {
+        this.previous_institute = previous_institute;
+    }
+
+    public Date getDegreeDate() {
+        return degree_date;
+    }
+
+    public void setDegreeDate(Date degree_date) {
+        this.degree_date = degree_date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getGPAScale() {
+        return gpascale;
+    }
+
+    public void setGPAScale(String gpascale) {
+        this.gpascale = gpascale;
+    }
+    
+    public String getCMUCollege() {
+        return cmucollege;
+    }
+
+    public void setCMUCollege(String cmucollege) {
+        this.cmucollege = cmucollege;
+    }
 
     public String getCountryOfResidence(){
         return country_of_residence;
@@ -187,15 +279,6 @@ public class Document implements Loggable {
     public void setRace(String race){
         this.race = race;
     }
-    
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    
     public String getSubject() {
         return subject;
     }

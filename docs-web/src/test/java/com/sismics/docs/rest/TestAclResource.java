@@ -1,4 +1,5 @@
 package com.sismics.docs.rest;
+import java.util.*;
 
 import com.sismics.util.filter.TokenBasedSecurityFilter;
 import org.junit.Assert;
@@ -42,8 +43,14 @@ public class TestAclResource extends BaseJerseyTest {
                         .param("title", "My super title document 1")
                         .param("country_of_residence", "Afghanistan")
                         .param("race", "White")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("language", "eng")
-                        .param("create_date", Long.toString(new Date().getTime()))), JsonObject.class);
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
+                        .param("create_date", Long.toString(1664991975626L))), JsonObject.class);
         String document1Id = json.getString("id");
 
         // Get the document as acl1
@@ -162,6 +169,12 @@ public class TestAclResource extends BaseJerseyTest {
                         .param("title", "My new super document 1")
                         .param("country_of_residence", "Afghanistan")
                         .param("race", "White")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("language", "eng")), JsonObject.class);
 
         Assert.assertEquals(document1Id, json.getString("id"));
@@ -299,6 +312,12 @@ public class TestAclResource extends BaseJerseyTest {
                         .param("title", "My super document 1")
                         .param("country_of_residence", "Afghanistan")
                         .param("race", "White")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("tags", tag1Id)
                         .param("language", "eng")), JsonObject.class);
         String document1Id = json.getString("id");
@@ -347,6 +366,12 @@ public class TestAclResource extends BaseJerseyTest {
                         .param("title", "My super document 1")
                         .param("country_of_residence", "Afghanistan")
                         .param("race", "White")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("tags", tag1Id)
                         .param("language", "eng")));
 
@@ -383,6 +408,13 @@ public class TestAclResource extends BaseJerseyTest {
                         .param("title", "My super document 1")
                         .param("country_of_residence", "Afghanistan")
                         .param("race", "White")
+                        .param("language", "eng")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("tags", tag1Id)
                         .param("language", "eng")));
         Assert.assertEquals(Status.FORBIDDEN.getStatusCode(), response.getStatus());
@@ -461,6 +493,12 @@ public class TestAclResource extends BaseJerseyTest {
                         .param("title", "My super document 1")
                         .param("country_of_residence", "Afghanistan")
                         .param("race", "White")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("tags", tag1Id)
                         .param("language", "eng")), JsonObject.class);
     }

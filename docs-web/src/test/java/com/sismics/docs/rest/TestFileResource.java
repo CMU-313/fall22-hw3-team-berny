@@ -1,5 +1,5 @@
 package com.sismics.docs.rest;
-
+import java.util.*;
 import com.google.common.io.ByteStreams;
 import com.google.common.io.Resources;
 import com.sismics.docs.core.util.DirectoryUtil;
@@ -465,6 +465,12 @@ public class TestFileResource extends BaseJerseyTest {
                         .param("title", "File test document 1")
                         .param("country_of_residence", "Afghanistan")
                         .param("race", "White")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("language", "eng")
                         .param("create_date", Long.toString(create1Date))), JsonObject.class);
         String document1Id = json.getString("id");

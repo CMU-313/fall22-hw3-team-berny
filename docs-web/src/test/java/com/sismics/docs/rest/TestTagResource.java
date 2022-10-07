@@ -96,6 +96,12 @@ public class TestTagResource extends BaseJerseyTest {
                         .param("title", "My super document 1")
                         .param("country_of_residence", "Afghanistan")
                         .param("race", "White")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("tags", tag3Id)
                         .param("language", "eng")), JsonObject.class);
         String document1Id = json.getString("id");
@@ -105,6 +111,12 @@ public class TestTagResource extends BaseJerseyTest {
                 .cookie(TokenBasedSecurityFilter.COOKIE_NAME, tag1Token)
                 .put(Entity.form(new Form()
                         .param("title", "My super document 2")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("tags", tag4Id)
                         .param("language", "eng")), JsonObject.class);
         String document2Id = json.getString("id");
@@ -144,6 +156,12 @@ public class TestTagResource extends BaseJerseyTest {
                 .post(Entity.form(new Form()
                         .param("title", "My super document 2")
                         .param("language", "eng")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("tags", tag3Id)
                         .param("country_of_residence", "Afghanistan")
                         .param("race", "White")
@@ -167,6 +185,12 @@ public class TestTagResource extends BaseJerseyTest {
                         .param("language", "eng")
                         .param("country_of_residence", "Afghanistan")
                         .param("race", "White")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("tags", tag4Id)));
         Assert.assertEquals(Status.OK, Status.fromStatusCode(response.getStatus()));
         

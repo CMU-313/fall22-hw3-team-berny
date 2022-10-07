@@ -176,9 +176,15 @@ public class ClientUtil {
                         .param("title", "Document Title")
                         .param("country_of_residence", "Afghanistan")
                         .param("race", "White")
+                        .param("name", "John Smith")
+                        .param("highest_held_degree", "bachelor_degree")
+                        .param("previous_institute", "CMU")
+                        .param("degree_date", Long.toString(1664991975626L))
                         .param("description", "Document description")
+                        .param("gpascale", "3_4")
+                        .param("cmucollege", "cit")
                         .param("language", "eng")
-                        .param("create_date", Long.toString(new Date().getTime()))), JsonObject.class);
+                        .param("create_date", Long.toString(1664991975626L))), JsonObject.class);
         String documentId = json.getString("id");
         Assert.assertNotNull(documentId);
         return documentId;
