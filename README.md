@@ -1,3 +1,7 @@
+## Documentation
+
+Documentation on our team's new features and user testing can be found in the "User Testing Documentation.pdf" file located in the Fall22-HW3-Team-Berny folder. 
+
 ![Open in Codespaces](https://classroom.github.com/assets/open-in-codespaces-abfff4d4e15f9e1bd8274d9a39a0befe03a0632bb0f153d0ec72ff541cedbe34.svg)
 <h3 align="center">
   <img src="https://teedy.io/img/github-title.png" alt="Teedy" width=500 />
@@ -128,7 +132,3 @@ mvn jetty:run
 
 Teedy is released under the terms of the GPL license. See `COPYING` for more
 information or see <http://opensource.org/licenses/GPL-2.0>.
-
-## Documentation
-
-Documentation on our team's new features and user testing can be found in the "User Testing Documentation.pdf" file located in the Fall22-HW3-Team-Berny folder. 
